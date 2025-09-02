@@ -4,8 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dev Goti Portfolio</title>
-  <meta name="description" content="<meta name="description" content="Curious mind, adventure seeker, and robot builder — exploring the world and crafting ideas that move." />
+  <meta name="description" content="Curious mind, adventure seeker, and robot builder — exploring the world and crafting ideas that move." />
   <link rel="stylesheet" href="styles.css" />
+  <!-- Font Awesome for social/media icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
@@ -41,8 +43,15 @@
           <p>I combine adventure and invention in everything I do.</p>
           <div class="cta-row">
             <a class="btn" href="#projects">Explore My Work</a>
-            <a class="btn-outline" href="https://github.com/devgoti16" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn-outline" href="https://github.com/devgoti16" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+            <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a class="btn-outline" href="mailto:devgoti1683@gmail.com">
+              <i class="fas fa-envelope"></i>
+            </a>
           </div>
         </div>
         <div class="hero-photo">
@@ -102,7 +111,6 @@
       <div class="container">
         <h3>Extracurricular & Leadership</h3>
         <div class="timeline">
-          <!-- CSD Robocon NITK -->
           <div class="timeline-item">
             <h4>CSD Robocon NITK</h4>
             <ul>
@@ -110,8 +118,6 @@
               <li><strong>Treasurer:</strong> Jan 2023 – Jul 2024 — Managed budget, procurement, and financial planning for team projects and competitions.</li>
             </ul>
           </div>
-
-          <!-- IEEE NITK -->
           <div class="timeline-item">
             <h4>IEEE NITK</h4>
             <ul>
@@ -119,8 +125,6 @@
               <li><strong>Outreach Lead:</strong> Apr 2023 – Mar 2024 — Organized workshops and promoted IEEE initiatives across student community.</li>
             </ul>
           </div>
-
-          <!-- CDC NITK -->
           <div class="timeline-item">
             <h4>Centre Development Centre, NITK</h4>
             <ul>
@@ -189,14 +193,13 @@
         <p>Let’s connect! I’m always excited to collaborate on robotics, AI, and autonomous vehicle.</p>
         <div class="contact-grid">
           <div>
-            <p><a href="mailto:devgoti1683@gmail.com">devgoti1683@gmail.com</a></p>
-          </div>
-          <div>
-            <form action="mailto:devgoti1683@gmail.com" method="post" enctype="text/plain" class="contact-form">
+            <form action="mailto:devgoti1683@gmail.com" method="post" class="contact-form">
               <label for="name">Name</label>
-              <input id="name" name="Name" placeholder="Your name" />
+              <input id="name" name="Name" type="text" placeholder="Your name" required />
+
               <label for="message">Message</label>
-              <textarea id="message" name="Message" rows="5" placeholder="Hi Dev — I'd like to talk about..."></textarea>
+              <textarea id="message" name="Message" rows="5" placeholder="Hi Dev — I'd like to talk about..." required></textarea>
+
               <button class="btn" type="submit">Send Email</button>
             </form>
           </div>
@@ -208,7 +211,7 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Dev Goti — Built with ⚙️ Robotics & ☕️ Coffee</p>
+      <p>© <span id="year"></span> Dev Goti — Made in India</p>
     </div>
   </footer>
 
