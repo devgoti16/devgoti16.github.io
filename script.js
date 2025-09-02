@@ -2,22 +2,24 @@
 document.addEventListener('DOMContentLoaded', function() {
   const nav = document.getElementById('nav');
   const toggle = document.getElementById('navToggle');
+
+  // Mobile nav toggle
   toggle.addEventListener('click', () => {
     nav.classList.toggle('show');
   });
 
-  // auto year
+  // Auto-update current year
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // close mobile nav on link click
-  document.querySelectorAll('#nav a').forEach(a=>{
+  // Close mobile nav when link is clicked
+  document.querySelectorAll('#nav a').forEach(a => {
     a.addEventListener('click', () => {
       if (nav.classList.contains('show')) nav.classList.remove('show');
     });
   });
 
-  // 🔹 Portfolio / Exploring tab toggle
+  // Portfolio / Exploring tab toggle
   const portfolioSection = document.getElementById('portfolioSection');
   const exploringSection = document.getElementById('exploringSection');
   const mainTabs = document.querySelectorAll('.main-tab');
@@ -26,10 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
     mainTabs.forEach(tab => {
       tab.addEventListener('click', e => {
         e.preventDefault();
-        // toggle active state
+
+        // Toggle active tab
         mainTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
 
+        // Show/hide sections
         if (tab.dataset.section === 'portfolio') {
           portfolioSection.style.display = 'block';
           exploringSection.style.display = 'none';
@@ -40,4 +44,13 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   }
+
+  // Optional: Horizontal scrolling for exploring images on mobile
+  const imageRows = document.querySelectorAll('.image-row');
+  imageRows.forEach(row => {
+    row.style.overflowX = 'auto';
+    row.style.display = 'flex';
+    row.style.gap = '0.5rem';
+    row.style.scrollBehavior = 'smooth';
+  });
 });
