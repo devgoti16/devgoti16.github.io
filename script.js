@@ -53,4 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     row.style.gap = '0.5rem';
     row.style.scrollBehavior = 'smooth';
   });
+ 
+
 });
