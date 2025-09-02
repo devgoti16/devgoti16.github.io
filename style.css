@@ -1,0 +1,91 @@
+:root{
+  --bg:#0f1724;
+  --card:#0b1220;
+  --muted:#9aa6b2;
+  --accent:#6ee7b7;
+  --white:#e6eef6;
+  --glass: rgba(255,255,255,0.03);
+  --max-width:1100px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#071025 0%, #071422 100%);
+  color:var(--white);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:16px;
+}
+
+/* layout */
+.container{max-width:var(--max-width);margin:0 auto;padding:1.2rem}
+.site-header{position:sticky;top:0;background:linear-gradient(180deg, rgba(7,16,37,0.8), rgba(7,16,37,0.4));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03);z-index:20}
+.header-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand h1{margin:0;font-size:1.25rem}
+.tagline{margin:0;font-size:0.9rem;color:var(--muted)}
+.nav{display:flex;gap:0.6rem;align-items:center}
+.nav a{color:var(--muted);text-decoration:none;padding:0.5rem;border-radius:8px}
+.nav a:hover{color:var(--white);background:var(--glass)}
+.resume-btn{border:1px solid rgba(255,255,255,0.06);padding:0.5rem 0.8rem;color:var(--accent);background:transparent;border-radius:8px}
+
+.nav-toggle{display:none;background:transparent;border:0;color:var(--white);font-size:1.2rem}
+
+/* Hero */
+.hero{padding:3rem 0}
+.hero-grid{display:grid;grid-template-columns:1fr 260px;gap:2rem;align-items:center}
+.hero-text h2{font-size:1.6rem;margin:0}
+.accent{color:var(--accent)}
+.meta{color:var(--muted);margin-top:0.6rem}
+.cta-row{margin-top:1rem;display:flex;gap:0.6rem;flex-wrap:wrap}
+.btn{background:var(--accent);color:#042423;padding:0.6rem 1rem;border-radius:8px;text-decoration:none;border:0;display:inline-block}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--white);padding:0.55rem 0.9rem;border-radius:8px}
+
+/* Photo */
+.hero-photo img{width:100%;height:auto;border-radius:14px;border:1px solid rgba(255,255,255,0.04);object-fit:cover}
+
+/* Sections */
+.section{padding:2.4rem 0}
+.section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005))}
+h3{margin-top:0;margin-bottom:0.8rem}
+.card{background:rgba(255,255,255,0.02);padding:1rem;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+.edu-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+
+/* timeline */
+.timeline{display:flex;flex-direction:column;gap:1rem}
+.timeline-item{background:rgba(255,255,255,0.02);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+.muted{color:var(--muted);font-size:0.95rem}
+
+/* projects */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+.project-card{padding:1rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+
+/* skills */
+.skill-chips{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill-chips span{background:rgba(255,255,255,0.03);padding:0.5rem 0.7rem;border-radius:999px;font-size:0.95rem}
+
+/* certs list */
+.cert-list{margin:0;padding-left:1rem}
+
+/* contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.contact-form input, .contact-form textarea{width:100%;padding:0.5rem;margin-bottom:0.6rem;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--white)}
+.contact-form label{font-size:0.9rem;color:var(--muted)}
+.contact-form .btn{display:inline-block}
+
+/* footer */
+.site-footer{padding:1rem 0;border-top:1px solid rgba(255,255,255,0.03);text-align:center;color:var(--muted);font-size:0.95rem}
+
+/* responsive */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:1rem}
+  .projects-grid{grid-template-columns:1fr}
+  .edu-skills-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .nav{position:absolute;right:1rem;top:64px;flex-direction:column;background:rgba(7,12,20,0.95);padding:0.8rem;border-radius:8px;display:none}
+  .nav.show{display:flex}
+  .nav-toggle{display:block}
+}
