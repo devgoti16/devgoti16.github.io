@@ -185,7 +185,7 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
 /* Travel / Exploring cards */
 .travel-card {
   display: flex;
-  flex-direction: row;
+  flex-direction: column; /* stack vertically */
   gap: 1rem;
   align-items: center;
   background: var(--card);
@@ -194,20 +194,27 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
   border: 1px solid rgba(255,255,255,0.06);
   box-shadow: 0 4px 14px rgba(0,0,0,0.3);
 }
-.travel-card img {
-  width: auto;
-  max-width: 200px;
-  height: auto;
-  object-fit: contain;
-  border-radius: 10px;
-  flex-shrink: 0;
-}
-.travel-text {
-  flex: 1 1 auto;
-}
+
+/* Container for multiple images inside a card */
 .image-row {
   display: flex;
+  flex-wrap: wrap;       /* wrap to next line if too many images */
+  justify-content: center;
   gap: 0.5rem;
+  width: 100%;
+}
+
+/* Images inside travel card */
+.image-row img {
+  max-width: 30%;        /* scale down to fit inside card */
+  height: auto;          /* maintain aspect ratio */
+  object-fit: contain;   /* prevent cropping */
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.image-row img:hover {
+  transform: scale(1.05);
 }
 
 /* Mobile adjustments */
@@ -234,13 +241,14 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
 
   /* Travel grid mobile */
   .travel-grid { grid-template-columns: 1fr; }
-  .image-row { flex-direction: column; }
+  .image-row { flex-direction: row; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .image-row img { max-width: 70%; }
 }
 
 /* Desktop travel horizontal images */
 @media (min-width: 769px) {
   .travel-grid { display: flex; flex-direction: column; gap: 1.2rem; }
-  .travel-card { flex-direction: row; align-items: center; }
+  .travel-card { flex-direction: column; align-items: center; }
   .image-row { flex-direction: row; }
 }
 
