@@ -1,11 +1,11 @@
 :root {
-  --bg: #181818;             /* Slightly warmer dark background */
-  --card: #232323;           /* Softer dark for cards/panels */
-  --muted: #a0a0a0;          /* Gentle muted text */
-  --accent: #6fb3c9;         /* Soft teal for primary accent */
-  --accent-alt: #8c7aa9;     /* Muted lavender for secondary accent */
-  --white: #e0e0e0;          /* Slightly warmer white for readability */
-  --glass: rgba(255,255,255,0.03); /* Softer glass effect */
+  --bg: #181818;
+  --card: #232323;
+  --muted: #a0a0a0;
+  --accent: #6fb3c9;
+  --accent-alt: #8c7aa9;
+  --white: #e0e0e0;
+  --glass: rgba(255,255,255,0.03);
   --max-width: 1100px;
   font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
@@ -34,7 +34,7 @@ body { background: var(--bg); color: var(--white); line-height: 1.6; font-size: 
 .hero-grid { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: center; }
 .hero-text h2 { font-size: 2.2rem; margin: 0; }
 .accent { color: var(--accent); }
-.dev-name { font-size: 3rem;font-weight: 700;color: var(--accent);  }
+.dev-name { font-size: 3rem; font-weight: 700; color: var(--accent); }
 .hero-text p { margin-top: 0.8rem; color: var(--white); max-width: 600px; }
 .cta-row { margin-top: 1.2rem; display: flex; gap: 0.8rem; flex-wrap: wrap; }
 .btn { background: linear-gradient(135deg, var(--accent), var(--accent-alt)); color: var(--bg); padding: 0.7rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s ease; }
@@ -60,15 +60,8 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
 
 /* Education & Experience card layout */
 .edu-card, .exp-card { display: flex; flex-direction: row; gap: 1rem; align-items: flex-start; background: var(--card); padding: 1rem; border: 1px solid rgba(224,224,224,0.06); box-shadow: 0 4px 14px rgba(0,0,0,0.3); }
-.edu-logo {
-  max-width: 140px;   
-  height: auto;
-  object-fit: contain; 
-  border-radius: 8px;
-}
-.tamu-logo { max-height: 130px; }
-.nitk-logo { max-height: 130px; }
-.iist-logo { max-height: 130px; }
+.edu-logo { max-width: 140px; height: auto; object-fit: contain; border-radius: 8px; }
+.tamu-logo, .nitk-logo, .iist-logo { max-height: 130px; }
 .edu-card img, .exp-card img { width: auto; max-width: 200px; height: auto; object-fit: contain; border-radius: 10px; flex-shrink: 0; }
 .edu-text, .exp-text { flex: 1 1 auto; }
 
@@ -89,9 +82,19 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
   .hero-photo img { width: 80%; max-width: 320px; height: auto; margin: 0 auto; }
   .cta-row { flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
   .cta-row .btn, .cta-row .btn-outline { flex: 0 1 auto; text-align: center; }
-
   .image-row { flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 0.5rem; overflow: visible; }
   .image-row img { max-width: 45%; }
+  .nav { position: absolute; top: 60px; right: 0; background: var(--card); flex-direction: column; align-items: flex-start; width: 220px; padding: 1rem; border-radius: 8px 0 0 8px; display: none; transform: translateX(100%); opacity: 0; }
+  .nav.show { display: flex; transform: translateX(0); opacity: 1; }
+  .nav a { display: block; width: 100%; padding: 0.7rem; }
+  .nav-toggle { display: block; }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 15px; }
+  h3 { font-size: 1.4rem; }
+  .dev-name { font-size: 2.2rem; }
+  .hero-text h2 { font-size: 1.8rem; }
 }
 
 /* Timeline bullets */
@@ -110,21 +113,3 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
 
 /* Footer */
 .site-footer { padding: 1.2rem; text-align: center; border-top: 1px solid rgba(224,224,224,0.08); font-size: 0.9rem; color: var(--muted); }
-
-/* Mobile nav */
-@media (max-width: 768px) {
-  .nav { position: absolute; top: 60px; right: 0; background: var(--card); flex-direction: column; align-items: flex-start; width: 220px; padding: 1rem; border-radius: 8px 0 0 8px; display: none; transform: translateX(100%); opacity: 0; }
-  .nav.show { display: flex; transform: translateX(0); opacity: 1; }
-  .nav a { display: block; width: 100%; padding: 0.7rem; }
-  .nav-toggle { display: block; }
-
-@media (max-width: 480px) {
-  body { font-size: 15px; }         /* slightly smaller base */
-  h3 { font-size: 1.4rem; }         /* reduce section headers */
-  .dev-name { font-size: 2.2rem; }  /* your big hero name */
-  .hero-text h2 { font-size: 1.8rem; }
-}
-
-
-
-}

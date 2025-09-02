@@ -1,4 +1,4 @@
-// small interactive bits: nav toggle and year autopopulate
+// Small interactive bits: nav toggle and year autopopulate
 document.addEventListener('DOMContentLoaded', function() {
   const nav = document.getElementById('nav');
   const toggle = document.getElementById('navToggle');
@@ -10,12 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Auto-update current year
   const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
   // Close mobile nav when link is clicked
   document.querySelectorAll('#nav a').forEach(a => {
     a.addEventListener('click', () => {
-      if (nav.classList.contains('show')) nav.classList.remove('show');
+      nav.classList.remove('show');
     });
   });
 
@@ -46,13 +48,10 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Optional: Horizontal scrolling for exploring images on mobile
-  const imageRows = document.querySelectorAll('.image-row');
-  imageRows.forEach(row => {
+  document.querySelectorAll('.image-row').forEach(row => {
     row.style.overflowX = 'auto';
     row.style.display = 'flex';
     row.style.gap = '0.5rem';
     row.style.scrollBehavior = 'smooth';
   });
- 
-
 });
