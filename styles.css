@@ -66,9 +66,9 @@ h3 { margin: 0 0 1rem; font-size: 1.7rem; color: var(--accent); }
   object-fit: contain; 
   border-radius: 8px;
 }
-.tamu-logo { max-height: 140px; }
-.nitk-logo { max-height: 140px; }
-.iist-logo { max-height: 140px; }
+.tamu-logo { max-height: 130px; }
+.nitk-logo { max-height: 130px; }
+.iist-logo { max-height: 130px; }
 .edu-card img, .exp-card img { width: auto; max-width: 200px; height: auto; object-fit: contain; border-radius: 10px; flex-shrink: 0; }
 .edu-text, .exp-text { flex: 1 1 auto; }
 
