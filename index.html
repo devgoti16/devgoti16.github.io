@@ -4,10 +4,51 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dev Goti Portfolio</title>
+  <link rel="icon" href="assets/dglogo.jpeg">
   <meta name="description" content="Curious mind, adventure seeker, and robot builder" />
+
+  <!-- Preload and Styles -->
+  <link rel="preload" href="styles.css" as="style">
   <link rel="stylesheet" href="styles.css" />
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://devgoti16.github.io">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:title" content="Dev Goti | Portfolio">
+  <meta property="og:description" content="Curious mind, adventure seeker, and robot builder">
+  <meta property="og:image" content="assets/profile.JPG">
+  <meta property="og:url" content="https://devgoti16.github.io">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dev Goti | Portfolio">
+  <meta name="twitter:description" content="Curious mind, adventure seeker, and robot builder">
+  <meta name="twitter:image" content="assets/profile.JPG">
+  <meta name="twitter:url" content="https://devgoti16.github.io">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Dev Goti",
+    "jobTitle": "Graduate Student & Robotics Enthusiast",
+    "alumniOf": [
+      "Texas A&M University",
+      "National Institute of Technology Karnataka"
+    ],
+    "sameAs": [
+      "https://github.com/devgoti16",
+      "https://www.linkedin.com/in/dev-goti/"
+    ],
+    "image": "assets/profile.JPG"
+  }
+  </script>
 </head>
 <body>
 
@@ -22,7 +63,7 @@
       <nav id="nav" class="nav">
         <a href="#" class="main-tab active" data-section="portfolio">Portfolio</a>
         <a href="#" class="main-tab" data-section="exploring">Exploring</a>
-        <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </nav>
     </div>
   </header>
@@ -44,10 +85,10 @@
               <i class="fas fa-map-marker-alt"></i> College Station, Texas, USA
             </div>
             <div class="cta-row">
-              <a class="btn-outline" href="https://github.com/devgoti16" target="_blank" rel="noopener">
+              <a class="btn-outline" href="https://github.com/devgoti16" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-github"></i>
               </a>
-              <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank" rel="noopener">
+              <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-linkedin"></i>
               </a>
               <a class="btn-outline" href="mailto:devgoti1683@gmail.com">
@@ -56,7 +97,7 @@
             </div>
           </div>
           <div class="hero-photo">
-            <img src="assets/profile.JPG" alt="Dev Goti" />
+            <img src="assets/profile.JPG" alt="Portrait of Dev Goti" loading="lazy" />
           </div>
         </div>
       </section>
@@ -64,7 +105,7 @@
       <!-- About -->
       <section id="about" class="section">
         <div class="container">
-          <h3>About Me</h3>
+          <h3><i class="fas fa-user"></i> About Me</h3>
           <p><i>Engineer. Explorer. Dreamer of autonomous worlds.</i></p>
           <p>Fascinated by how machines can learn, adapt, and move with purpose, I enjoy working at the crossroads of robotics and AI, where imagination meets engineering, and where robots are shaped to navigate complex, dynamic environments.</p>
           <p>Currently pursuing my Master’s at Texas A&M University, I focus on challenges in <b>autonomous navigation, planning, perception, and control</b>, always aiming to bridge the gap between theory and real-world applications of intelligent machines.</p>
@@ -74,12 +115,90 @@
       <!-- Projects -->
       <section id="projects" class="section alt">
         <div class="container">
-          <h3>Projects</h3>
+          <h3><i class="fas fa-project-diagram"></i> Projects</h3>
           <div class="projects-grid">
+
             <article class="project-card">
-              <h4>Autonomous Navigation of Differential Drive Robot using Deep Reinforcement Learning</h4>
-              <p>COMING SOON</p>
+              <img src="assets/drl.jpg" alt="Autonomous Robot Navigation Project" loading="lazy" />
+<img src="assets/drl2.jpg" alt="Autonomous Robot Navigation Project" loading="lazy" />
+              <h4>Autonomous Navigation of a Robot using RL Algorithm</h4>
+              <p>An autonomous robot that learns to navigate efficiently using TD3-based Deep Reinforcement Learning, LiDAR, and ROS 2, capable of real-time path planning in both simulated and real-world environments.</p>
+              <a href="https://github.com/devgoti16" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
             </article>
+
+            <article class="project-card">
+              <img src="assets/arm.PNG" alt="AI Path Planning Project" loading="lazy" />
+              <h4>Dynamic Trajectory Planning of a 7DOF Robotic Arm using Deep Reinforcement Learning</h4>
+              <p>Applied Proximal Policy Optimization (PPO) with PyTorch in a ROS–Gazebo environment for real-time control of a Kinova JACO2 arm. The system features dynamic goal updates, a multi-factor reward function, TensorBoard-based performance tracking, and checkpointed training for reliable trajectory learning.</p>
+              <a href="https://github.com/devgoti16/Dynamic-Trajectory-Planning-of-a-7DOF-Robotic-Arm-Using-Deep-Reinforcement-Learning" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+            <article class="project-card">
+              <img src="https://via.placeholder.com/400x250" alt="COMING SOON" loading="lazy" />
+              <h4>Sentinel Drone</h4>
+              <p>A ROS-based autonomous drone system for eYRC 2022-23, featuring PID flight control, vision-based anomaly detection, and georeferenced mapping with QGIS integration</p>
+              <a href="https://github.com/devgoti16/Sentinel-Drone" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+            <article class="project-card">
+              <img src="assets/llie.PNG" alt="LLIE" loading="lazy" />
+              <h4>Low Light Image Enhancement using MIRNet</h4>
+              <p>Developed a deep learning model to enhance low-light images using multi-scale residual blocks and attention mechanisms, with deployment on Arduino Nano 33 BLE Sense.</p>
+              <a href="https://github.com/IEEE-NITK/Low-Light-Image-Enhancement-Using-MIRNet/tree/main" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+
+<article class="project-card">
+              <img src="COMING SOON" alt="COMING SOON" loading="lazy" />
+              <h4>Active Knee Exoskeleton Control for Crouch Gait Mitigation</h4>
+              <p>COMING SOON</p>
+              <a href="https://example.com" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+<article class="project-card">
+              <img src="COMING SOON" alt="COMING SOON" loading="lazy" />
+              <h4>Micromouse Path Solver</h4>
+              <p>COMING SOON</p>
+              <a href="https://example.com" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+<article class="project-card">
+              <img src="COMING SOON" alt="COMING SOON" loading="lazy" />
+              <h4>Snake Game on 8x8 LED Matrix</h4>
+              <p>COMING SOON</p>
+              <a href="https://example.com" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Competitions -->
+      <section id="competitions" class="section alt">
+        <div class="container">
+          <h3><i class="fas fa-trophy"></i> Competitions</h3>
+          <div class="card edu-card">
+            <img src="assets/crn.jpg" alt="CSD Robocon NITK Logo" class="edu-logo robocon-logo" loading="lazy" />
+            <div class="edu-text">
+              <h4>ABU Robocon (International Robotics Competition)</h4>
+              <p><em>Team: CSD Robocon NITK, Mangalore, India</em></p>
+              <p>
+                <a href="https://robocon.nitk.ac.in/" target="_blank" class="btn-outline" rel="noopener noreferrer">Visit Team Website</a>
+              </p>
+              <p><strong>My Journey</strong></p>
+              <p>
+                I began as an <b>electronics and programming systems member</b>, designing circuits, wiring sensors, 
+                and programming microcontrollers to bring our robots to life. Later, I mentored juniors, made design choices, 
+                and coordinated across subsystems. Eventually, I stepped up as <b>Vice Captain</b>, guiding a <b>40+ member team</b> and leading our journey to the <b>ABU Robocon stage</b>.
+              </p>
+              <div class="image-row">
+                <img src="assets/crn1.jpg" alt="Robot Build Process" loading="lazy" />
+                <img src="assets/crn2.jpg" alt="Team CSD Robocon NITK Group Photo" loading="lazy" />
+                <img src="assets/crn3.jpg" alt="Robot in Action" loading="lazy" />
+                <img src="assets/crn4.jpg" alt="Robot Competing at Robocon" loading="lazy" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -87,29 +206,24 @@
       <!-- Education -->
       <section id="education" class="section">
         <div class="container">
-          <h3>Education</h3>
+          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
           <div class="edu-skills-grid">
-
-            <!-- Texas A&M -->
             <div class="card edu-card">
-              <img src="assets/TAMU_logo.png" alt="Texas A&M University Logo" class="edu-logo tamu-logo" />
+              <img src="assets/TAMU_logo.png" alt="Texas A&M University Logo" class="edu-logo tamu-logo" loading="lazy" />
               <div class="edu-text">
                 <h4>Texas A&amp;M University</h4>
                 <p><em>College Station, Texas, USA</em></p>
                 <p><strong>Master of Science in Electrical Engineering</strong><br>Aug 2025 – May 2027</p>
               </div>
             </div>
-
-            <!-- NITK -->
             <div class="card edu-card">
-              <img src="assets/NITK_Logo.png" alt="NITK Logo" class="edu-logo nitk-logo" />
+              <img src="assets/NITK_Logo.png" alt="NITK Surathkal Logo" class="edu-logo nitk-logo" loading="lazy" />
               <div class="edu-text">
                 <h4>National Institute of Technology Karnataka, Surathkal</h4>
                 <p><em>Mangalore, India</em></p>
-                <p><strong>Bachelor of Technology in Electrical and Electronics Engineering</strong><br>Aug 2021 – May 2025</p>
+                <p><strong>Bachelor of Technology in Electrical and Electronics Engineering</strong><br>Dec 2021 – May 2025</p>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -117,12 +231,10 @@
       <!-- Experience -->
       <section id="experience" class="section">
         <div class="container">
-          <h3>Experience</h3>
+          <h3><i class="fas fa-briefcase"></i> Experience</h3>
           <div class="edu-skills-grid">
-
-            <!-- IIST Summer Research -->
             <div class="card edu-card">
-              <img src="assets/IIST_logo.png" alt="IIST Logo" class="edu-logo iist-logo" />
+              <img src="assets/IIST_logo.png" alt="IIST Logo" class="edu-logo iist-logo" loading="lazy" />
               <div class="edu-text">
                 <h4>Indian Institute of Space Science and Technology</h4>
                 <p><em>Thiruvananthapuram, India</em></p>
@@ -130,67 +242,59 @@
                 <p>Received Indian Academy of Science Summer Research Fellowship</p>
               </div>
             </div>
-
           </div>
         </div>
       </section>
 
       <!-- Contact -->
-      <section id="contact" class="section contact-section">
-        <div class="container">
-          <h3>Contact</h3>
-          <p>Let’s connect! I’m always excited to collaborate on robotics, AI, and autonomous vehicles.</p>
-          <div class="contact-grid">
-            <form action="mailto:devgoti1683@gmail.com" method="post" class="contact-form">
-              <label for="name">Name</label>
-              <input id="name" name="Name" type="text" placeholder="Your name" required />
 
-              <label for="message">Message</label>
-              <textarea id="message" name="Message" rows="5" placeholder="Hi Dev — I'd like to talk about..." required></textarea>
+<section id="contact" class="section contact-section" data-aos="fade-up">
+  <div class="container">
+    <h3>Contact</h3>
+    <p>Let’s connect! I’m always excited to collaborate on robotics, AI, and autonomous vehicles.</p>
+    
+    <form action="https://formspree.io/f/xgvnvrla" method="POST" class="contact-form">
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" placeholder="Your name" required>
 
-              <button class="btn" type="submit">Send Email</button>
-            </form>
-          </div>
-        </div>
-      </section>
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </div>
+</section>
 
     </section>
-    <!-- ================= /Portfolio Section ================= -->
 
     <!-- ================= Exploring Section ================= -->
     <section id="exploringSection" class="section" style="display: none;">
       <div class="container">
-        <h3>Exploring</h3>
+        <h3><i class="fas fa-hiking"></i> Exploring</h3>
         <p>I love traveling and sharing my adventures. Here I’ll post travel stories, photos, and guides.</p>
         <div class="travel-grid">
-
-          <!-- Card 1 -->
           <article class="project-card">
             <div class="image-row">
-              <img src="assets/kalsubai1.jpg" alt="Kalsubai Trek" />
-              <img src="assets/kalsubai2.jpg" alt="Kalsubai Trek" />
-              <img src="assets/kalsubai3.jpg" alt="Kalsubai Trek" />
+              <img src="assets/kalsubai1.jpg" alt="Kalsubai Trek View 1" loading="lazy" />
+              <img src="assets/kalsubai2.jpg" alt="Kalsubai Trek View 2" loading="lazy" />
+              <img src="assets/kalsubai3.jpg" alt="Kalsubai Trek View 3" loading="lazy" />
             </div>
             <h4>Kalsubai Trek</h4>
             <p>Above the clouds at Maharashtra’s highest peak — every step was a mix of sweat, thrill, and stunning views worth the climb.</p>
           </article>
-
-          <!-- Card 2 -->
           <article class="project-card">
             <div class="image-row">
-              <img src="assets/kudremukh3.jpg" alt="Kudremukh Trek" />
-              <img src="assets/kudremukh2.jpg" alt="Kudremukh Trek" />
-              <img src="assets/kudremukh1.jpg" alt="Kudremukh Trek" />
+              <img src="assets/kudremukh3.jpg" alt="Kudremukh Trek View 1" loading="lazy" />
+              <img src="assets/kudremukh2.jpg" alt="Kudremukh Trek View 2" loading="lazy" />
+              <img src="assets/kudremukh1.jpg" alt="Kudremukh Trek View 3" loading="lazy" />
             </div>
             <h4>Kudremukh Trek</h4>
             <p>Trekking through Kudremukh — where every step unveils misty hills, lush forests, and the serene beauty of Karnataka’s highlands.</p>
           </article>
-
         </div>
       </div>
     </section>
     <!-- ================= /Exploring Section ================= -->
-
   </main>
 
   <!-- Footer -->
@@ -200,6 +304,26 @@
     </div>
   </footer>
 
+  <!-- Scroll-to-top button -->
+  <button id="scrollTopBtn" title="Go to top" style="display:none;">⬆</button>
+
   <script src="script.js"></script>
+  <script>
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Scroll-to-top
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+    window.onscroll = function() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        scrollTopBtn.style.display = "block";
+      } else {
+        scrollTopBtn.style.display = "none";
+      }
+    };
+    scrollTopBtn.onclick = function() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+  </script>
 </body>
 </html>
