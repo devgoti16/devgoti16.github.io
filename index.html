@@ -147,6 +147,14 @@
               <a href="https://github.com/IEEE-NITK/Low-Light-Image-Enhancement-Using-MIRNet/tree/main" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
             </article>
 
+<article class="project-card">
+              <img src="assets/segment.png" alt="segment" loading="lazy" />
+              <h4>Heuristic and Local-Optimization-Based Controller for Efficient Segment Visitation</h4>
+              <p>Combines heuristic nearest-neighbor planning with local 2-opt optimization for path refinement and smooth execution</p>
+              <a href="https://github.com/devgoti16/Heuristic-and-Local-Optimization-Based-Controller-for-Efficient-Segment-Visitation" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            </article>
+
+
 
 <article class="project-card">
               <img src="COMING SOON" alt="COMING SOON" loading="lazy" />
@@ -300,7 +308,8 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Dev Goti — Life is Adventure</p>
+      <p>© <span id="year"></span> Dev Goti — Life is Adventure | <a href="/privacy.html">Privacy Policy</a></p>
+
     </div>
   </footer>
 
@@ -324,6 +333,12 @@
     scrollTopBtn.onclick = function() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     };
-  </script>
+
+  // Disable right-click on whole page
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+</script>
+
 </body>
 </html>

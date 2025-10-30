@@ -40,6 +40,11 @@ body { background: var(--bg); color: var(--white); line-height: 1.6; font-size: 
 .btn { background: linear-gradient(135deg, var(--accent), var(--accent-alt)); color: var(--bg); padding: 0.7rem 1.1rem; border-radius: 8px; text-decoration: none; font-weight: 600; transition: transform 0.2s ease; }
 .btn:hover { transform: translateY(-2px); }
 .btn-outline { border: 1px solid var(--accent-alt); color: var(--accent-alt); padding: 0.65rem 1rem; border-radius: 8px; text-decoration: none; }
+.img {
+  pointer-events: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+}
 
 
 .image-row {
