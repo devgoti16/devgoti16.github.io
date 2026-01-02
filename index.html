@@ -3,92 +3,807 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Dev Goti Portfolio</title>
+  <title>Dev Goti | Robotics Engineer & AI Researcher</title>
   <link rel="icon" href="assets/dglogo.jpeg">
-  <meta name="description" content="Curious mind, adventure seeker, and robot builder" />
-
-  <!-- Preload and Styles -->
-  <link rel="preload" href="styles.css" as="style">
-  <link rel="stylesheet" href="styles.css" />
   
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://devgoti16.github.io">
-
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Dev Goti - MS Student at Texas A&M specializing in autonomous robotics, deep reinforcement learning, and robot navigation. 3+ years of experience in robotics competitions and research." />
+  <meta name="keywords" content="Dev Goti, Robotics Engineer, AI Researcher, ROS, Deep Learning, Autonomous Navigation, Texas A&M, NITK, ABU Robocon" />
+  <meta name="author" content="Dev Goti" />
+  <meta name="robots" content="index, follow" />
+  
   <!-- Open Graph / Facebook / LinkedIn -->
-  <meta property="og:title" content="Dev Goti | Portfolio">
-  <meta property="og:description" content="Curious mind, adventure seeker, and robot builder">
-  <meta property="og:image" content="assets/profil.JPG">
-  <meta property="og:url" content="https://devgoti16.github.io">
-  <meta property="og:type" content="website">
-
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://devgoti16.github.io" />
+  <meta property="og:title" content="Dev Goti | Robotics Engineer & AI Researcher" />
+  <meta property="og:description" content="MS Student at Texas A&M specializing in autonomous robotics, deep reinforcement learning, and robot navigation" />
+  <meta property="og:image" content="https://devgoti16.github.io/assets/profile.JPG" />
+  
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dev Goti | Portfolio">
-  <meta name="twitter:description" content="Curious mind, adventure seeker, and robot builder">
-  <meta name="twitter:image" content="assets/profil.JPG">
-  <meta name="twitter:url" content="https://devgoti16.github.io">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://devgoti16.github.io" />
+  <meta name="twitter:title" content="Dev Goti | Robotics Engineer & AI Researcher" />
+  <meta name="twitter:description" content="MS Student at Texas A&M specializing in autonomous robotics, deep reinforcement learning, and robot navigation" />
+  <meta name="twitter:image" content="https://devgoti16.github.io/assets/profile.JPG" />
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://devgoti16.github.io" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
 
-  <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Dev Goti",
-    "jobTitle": "Graduate Student & Robotics Enthusiast",
-    "alumniOf": [
-      "Texas A&M University",
-      "National Institute of Technology Karnataka"
-    ],
-    "sameAs": [
-      "https://github.com/devgoti16",
-      "https://www.linkedin.com/in/dev-goti/"
-    ],
-    "image": "assets/profil.JPG"
-  }
-  </script>
+    :root {
+      --white: #ffffff;
+      --light-gray: #f5f5f5;
+      --medium-gray: #9e9e9e;
+      --dark-gray: #424242;
+      --black: #1a1a1a;
+      --pure-black: #000000;
+    }
+
+    [data-theme="dark"] {
+      --white: #1a1a1a;
+      --light-gray: #2a2a2a;
+      --medium-gray: #b0b0b0;
+      --dark-gray: #e0e0e0;
+      --black: #ffffff;
+      --pure-black: #ffffff;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* Prevent screenshot and download */
+    img {
+      pointer-events: none;
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+    }
+
+
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--white);
+      padding: 1.2rem 0;
+      z-index: 1000;
+      border-bottom: 2px solid var(--light-gray);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      transition: background 0.3s;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand h1 {
+      font-size: 1.6rem;
+      color: var(--black);
+      margin-bottom: 0;
+      font-weight: 700;
+    }
+
+    .tagline {
+      font-size: 0.85rem;
+      color: var(--medium-gray);
+      margin-top: 0.2rem;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--dark-gray);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--black);
+    }
+
+    .resume-btn {
+      padding: 0.6rem 1.5rem !important;
+      background: var(--black) !important;
+      color: var(--white) !important;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .resume-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 2px solid var(--black);
+      color: var(--black);
+      padding: 0.5rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--black);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 60px 0 80px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--black);
+      font-weight: 700;
+      line-height: 1.2;
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    .dev-name {
+      border-bottom: 4px solid var(--black);
+    }
+
+    .elevator-pitch {
+      font-size: 1.15rem;
+      color: var(--dark-gray);
+      margin: 1rem 0 1.5rem;
+      padding: 1rem;
+      background: var(--light-gray);
+      border-left: 4px solid var(--black);
+      border-radius: 4px;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.2s forwards;
+    }
+
+    .hero-text p {
+      font-size: 1.05rem;
+      color: var(--dark-gray);
+      margin-bottom: 0.7rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.3s forwards;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--medium-gray);
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.4s forwards;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.5s forwards;
+    }
+
+    .btn-outline {
+      padding: 0.75rem 1.5rem;
+      border: 2px solid var(--black);
+      color: var(--black);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .btn-outline:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      padding: 0.75rem 1.8rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .hero-photo {
+      opacity: 0;
+      animation: fadeInUp 0.8s 0.6s forwards;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 3px solid var(--light-gray);
+      transition: transform 0.3s;
+    }
+
+    .hero-photo img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Sections */
+    .section {
+      padding: 60px 0;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section.alt {
+      background: var(--light-gray);
+    }
+
+    .section h3 {
+      font-size: 2rem;
+      color: var(--black);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 700;
+    }
+
+    .section h3 i {
+      font-size: 1.8rem;
+    }
+
+    .section > .container > p {
+      font-size: 1.05rem;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+      max-width: 900px;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .skill-category {
+      background: var(--white);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 2px solid var(--light-gray);
+      transition: all 0.3s;
+    }
+
+    .skill-category:hover {
+      border-color: var(--medium-gray);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .skill-category h4 {
+      color: var(--black);
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      padding: 0.5rem 1rem;
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+
+    .skill-tag:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* Project Filters */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      padding: 0.6rem 1.5rem;
+      background: var(--white);
+      border: 2px solid var(--light-gray);
+      color: var(--dark-gray);
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+    /* Projects Grid */
+    .projects-grid,
+    .travel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid var(--light-gray);
+      transition: all 0.3s;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-color: var(--medium-gray);
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-img-container {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: var(--light-gray);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .project-card h4 {
+      color: var(--black);
+      padding: 1.2rem 1.5rem 0.8rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .project-card p {
+      padding: 0 1.5rem 1rem;
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .project-tags {
+      padding: 0 1.5rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .project-tag {
+      padding: 0.3rem 0.8rem;
+      background: var(--light-gray);
+      color: var(--dark-gray);
+      border-radius: 15px;
+      font-size: 0.85rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.8rem;
+      background: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 6px;
+      margin: 0 1.5rem 1.5rem;
+      font-weight: 600;
+      transition: all 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Cards */
+    .edu-skills-grid {
+      display: grid;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 2px solid var(--light-gray);
+      transition: all 0.3s;
+    }
+
+    .card:hover {
+      border-color: var(--medium-gray);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .edu-card {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .edu-logo {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .edu-text h4 {
+      color: var(--black);
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .edu-text p {
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .edu-text em {
+      color: var(--medium-gray);
+    }
+
+    .edu-text strong {
+      color: var(--black);
+      font-weight: 600;
+    }
+
+    .image-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .image-row img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      transition: transform 0.3s;
+      border: 2px solid var(--light-gray);
+    }
+
+    .image-row img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    .contact-form label {
+      display: block;
+      color: var(--dark-gray);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--white);
+      border: 2px solid var(--light-gray);
+      border-radius: 6px;
+      color: var(--black);
+      font-family: inherit;
+      transition: border-color 0.3s;
+      font-size: 1rem;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--dark-gray);
+    }
+
+    .contact-form button {
+      width: 100%;
+      padding: 1rem;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    .site-footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--light-gray);
+      border-top: 2px solid var(--medium-gray);
+      color: var(--dark-gray);
+    }
+
+    .site-footer a {
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    /* Scroll to top */
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--black);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    #scrollTopBtn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-photo {
+        order: -1;
+      }
+
+      .hero-photo img {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+
+      .cta-row {
+        justify-content: center;
+      }
+
+      .projects-grid,
+      .travel-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edu-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .image-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--white);
+        flex-direction: column;
+        padding: 2rem;
+        transition: left 0.3s;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      }
+
+      .nav.active {
+        left: 0;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
+
+      .hero-text h2 {
+        font-size: 1.8rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .section h3 {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
         <h1>Dev Goti</h1>
-        <p class="tagline">Exploring and Building</p>
+        <p class="tagline"></p>
       </div>
-      <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation">☰</button>
+      <button id="navToggle" class="nav-toggle">☰</button>
       <nav id="nav" class="nav">
         <a href="#" class="main-tab active" data-section="portfolio">Portfolio</a>
         <a href="#" class="main-tab" data-section="exploring">Exploring</a>
-        <a class="resume-btn" href="assets/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <a class="resume-btn" href="assets/resume.pdf" target="_blank">Resume</a>
       </nav>
     </div>
   </header>
 
   <main>
-
-    <!-- ================= Portfolio Section ================= -->
     <section id="portfolioSection">
-
-      <!-- Hero -->
       <section id="hero" class="hero">
         <div class="container hero-grid">
           <div class="hero-text">
             <h2>Hello, I'm <span class="dev-name">Dev</span></h2>
-            <p>Traveling, discovering, exploring—that’s how I live.</p>
-            <p>Designing and building robots—that’s how I create.</p>
+            
+            <p>Traveling, discovering, exploring—that's how I live.</p>
+            <p>Designing and building robots—that's how I create.</p>
             <p>I combine adventure and invention in everything I do.</p>
             <div class="location">
               <i class="fas fa-map-marker-alt"></i> College Station, Texas, USA
             </div>
             <div class="cta-row">
-              <a class="btn-outline" href="https://github.com/devgoti16" target="_blank" rel="noopener noreferrer">
+              <a class="btn-primary" href="assets/resume.pdf" target="_blank">
+                <i class="fas fa-download"></i> Download Resume
+              </a>
+              <a class="btn-outline" href="https://github.com/devgoti16" target="_blank">
                 <i class="fab fa-github"></i>
               </a>
-              <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank" rel="noopener noreferrer">
+              <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank">
                 <i class="fab fa-linkedin"></i>
               </a>
               <a class="btn-outline" href="mailto:devgoti1683@gmail.com">
@@ -97,115 +812,191 @@
             </div>
           </div>
           <div class="hero-photo">
-            <img src="assets/profile.JPG" alt="Portrait of Dev Goti" loading="lazy" />
+            <img src="assets/profile.JPG" alt="Dev Goti - Robotics Engineer" />
           </div>
         </div>
       </section>
 
-      <!-- About -->
       <section id="about" class="section">
         <div class="container">
           <h3><i class="fas fa-user"></i> About Me</h3>
-          <p><i>Engineer. Explorer. Dreamer of autonomous worlds.</i></p>
+          <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem;">Engineer. Explorer. Dreamer of autonomous worlds.</p>
           <p>Fascinated by how machines can learn, adapt, and move with purpose, I enjoy working at the crossroads of robotics and AI, where imagination meets engineering, and where robots are shaped to navigate complex, dynamic environments.</p>
-          <p>Currently pursuing my Master’s at Texas A&M University, I focus on challenges in <b>autonomous navigation, planning, perception, and control</b>, always aiming to bridge the gap between theory and real-world applications of intelligent machines.</p>
+          <p>Currently pursuing my Master's at Texas A&M University, I focus on challenges in <strong>autonomous navigation, planning, perception, and control</strong>, always aiming to bridge the gap between theory and real-world applications of intelligent machines.</p>
         </div>
       </section>
 
-      <!-- Projects -->
-      <section id="projects" class="section alt">
+
+      <section id="projects" class="section">
         <div class="container">
           <h3><i class="fas fa-project-diagram"></i> Projects</h3>
+          
+          <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="deep-learning">Deep Learning</button>
+            <button class="filter-btn" data-filter="navigation">Navigation</button>
+            <button class="filter-btn" data-filter="computer-vision">Computer Vision</button>
+            <button class="filter-btn" data-filter="planning">Path Planning</button>
+          </div>
+
           <div class="projects-grid">
-
-            <article class="project-card">
-              <img src="assets/drl.jpg" alt="Autonomous Robot Navigation Project" loading="lazy" />
-<img src="assets/drl2.jpg" alt="Autonomous Robot Navigation Project" loading="lazy" />
-              <h4>Autonomous Navigation of a Robot using RL Algorithm</h4>
-              <p>An autonomous robot that learns to navigate efficiently using TD3-based Deep Reinforcement Learning, LiDAR, and ROS 2, capable of real-time path planning in both simulated and real-world environments.</p>
-              <a href="https://github.com/IEEE-NITK/Path_Planning_of_a_robot_using_DRL" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            <article class="project-card" data-category="deep-learning navigation">
+              <div class="project-img-container">
+                <img src="assets/drl2.jpg" alt="Autonomous Navigation using Deep RL" />
+              </div>
+              <h4>Autonomous Navigation using RL</h4>
+              <p>Developed an autonomous mobile robot navigation system using TD3-based Deep Reinforcement Learning, integrating LiDAR sensing and ROS 2 for real-time decision-making.</p>
+              <div class="project-tags">
+                <span class="project-tag">Deep RL</span>
+                <span class="project-tag">ROS 2</span>
+                <span class="project-tag">LiDAR</span>
+              </div>
+              <a href="https://github.com/IEEE-NITK/Path_Planning_of_a_robot_using_DRL" target="_blank" class="btn">View Project</a>
             </article>
 
-            <article class="project-card">
-              <img src="assets/arm.png" alt="AI Path Planning Project" loading="lazy" />
-              <h4>Dynamic Trajectory Planning of a 7DOF Robotic Arm using Deep Reinforcement Learning</h4>
-              <p>Applied Proximal Policy Optimization (PPO) with PyTorch in a ROS–Gazebo environment for real-time control of a Kinova JACO2 arm. The system features dynamic goal updates, a multi-factor reward function, TensorBoard-based performance tracking, and checkpointed training for reliable trajectory learning.</p>
-              <a href="https://github.com/devgoti16/Dynamic-Trajectory-Planning-of-a-7DOF-Robotic-Arm-Using-Deep-Reinforcement-Learning" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            <article class="project-card" data-category="deep-learning planning">
+              <div class="project-img-container">
+                <img src="assets/arm.png" alt="7DOF Robotic Arm Trajectory Planning" />
+              </div>
+              <h4>7DOF Robotic Arm Planning</h4>
+              <p>Implemented PPO-based deep reinforcement learning for dynamic trajectory planning of a 7-DOF Kinova JACO2 arm in ROS–Gazebo environment.</p>
+              <div class="project-tags">
+                <span class="project-tag">PPO</span>
+                <span class="project-tag">ROS</span>
+                <span class="project-tag">Gazebo</span>
+              </div>
+              <a href="https://github.com/devgoti16/Dynamic-Trajectory-Planning-of-a-7DOF-Robotic-Arm-Using-Deep-Reinforcement-Learning" target="_blank" class="btn">View Project</a>
             </article>
 
-            <article class="project-card">
-              <img src="assets/prmnav.png" alt="COMING SOON" loading="lazy" />
+            <article class="project-card" data-category="navigation planning">
+              <div class="project-img-container">
+                <img src="assets/prmnav.png" alt="PRM-Nav Autonomous Navigation" />
+              </div>
               <h4>PRM-Nav</h4>
-              <p>PRM-Nav is a ROS2-based autonomous navigation system that uses Probabilistic Roadmaps (PRM) to plan and execute collision-free paths for a differential-drive robot in obstacle-filled environments</p>
-              <a href="https://github.com/devgoti16/PRM-Nav" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+              <p>Built a ROS2-based autonomous navigation pipeline using Probabilistic Roadmaps for global planning in obstacle-dense environments.</p>
+              <div class="project-tags">
+                <span class="project-tag">ROS 2</span>
+                <span class="project-tag">PRM</span>
+                <span class="project-tag">Navigation</span>
+              </div>
+              <a href="https://github.com/devgoti16/PRM-Nav" target="_blank" class="btn">View Project</a>
             </article>
 
-
-            <article class="project-card">
-              <img src="assets/llie.png" alt="LLIE" loading="lazy" />
-              <h4>Low Light Image Enhancement using MIRNet</h4>
-              <p>Developed a deep learning model to enhance low-light images using multi-scale residual blocks and attention mechanisms, with deployment on Arduino Nano 33 BLE Sense.</p>
-              <a href="https://github.com/IEEE-NITK/Low-Light-Image-Enhancement-Using-MIRNet/tree/main" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            <article class="project-card" data-category="computer-vision deep-learning">
+              <div class="project-img-container">
+                <img src="assets/llie.png" alt="Low Light Image Enhancement" />
+              </div>
+              <h4>Low Light Image Enhancement</h4>
+              <p>Developed deep learning–based enhancement using MIRNet, deployed on Arduino Nano 33 BLE Sense for edge AI applications.</p>
+              <div class="project-tags">
+                <span class="project-tag">MIRNet</span>
+                <span class="project-tag">Edge AI</span>
+                <span class="project-tag">Arduino</span>
+              </div>
+              <a href="https://github.com/IEEE-NITK/Low-Light-Image-Enhancement-Using-MIRNet/tree/main" target="_blank" class="btn">View Project</a>
             </article>
 
-<article class="project-card">
-              <img src="assets/segment.png" alt="segment" loading="lazy" />
-              <h4>Heuristic and Local-Optimization-Based Controller for Efficient Segment Visitation</h4>
-              <p>Combines heuristic nearest-neighbor planning with local 2-opt optimization for path refinement and smooth execution</p>
-              <a href="https://github.com/devgoti16/Heuristic-and-Local-Optimization-Based-Controller-for-Efficient-Segment-Visitation" target="_blank" class="btn" rel="noopener noreferrer">View Project</a>
+            <article class="project-card" data-category="planning">
+              <div class="project-img-container">
+                <img src="assets/segment.png" alt="Heuristic Path Planning Controller" />
+              </div>
+              <h4>Segment Visitation Controller</h4>
+              <p>Designed hybrid path planning framework combining heuristic strategies with local 2-opt optimization for efficient navigation.</p>
+              <div class="project-tags">
+                <span class="project-tag">Heuristics</span>
+                <span class="project-tag">Optimization</span>
+                <span class="project-tag">Planning</span>
+              </div>
+              <a href="https://github.com/devgoti16/Heuristic-and-Local-Optimization-Based-Controller-for-Efficient-Segment-Visitation" target="_blank" class="btn">View Project</a>
             </article>
-
-
           </div>
         </div>
       </section>
 
-      <!-- Competitions -->
+
+<!-- <section id="skills" class="section alt">
+        <div class="container">
+          <h3><i class="fas fa-code"></i> Skills</h3>
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h4>Programming</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">MATLAB</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>Robotics & Control</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">ROS / ROS 2</span>
+                <span class="skill-tag">Gazebo</span>
+                <span class="skill-tag">Navigation</span>
+                <span class="skill-tag">Path Planning</span>
+                <span class="skill-tag">SLAM</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>AI & ML </h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Deep RL </span>
+                <span class="skill-tag">TensorFlow</span>
+                <span class="skill-tag">PyTorch</span>
+                <span class="skill-tag">OpenCV</span>
+                <span class="skill-tag">Computer Vision</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h4>Hardware & Embedded</h4>
+              <div class="skill-tags">
+                <span class="skill-tag">Arduino</span>
+                <span class="skill-tag">Raspberry Pi</span>
+                <span class="skill-tag">LiDAR</span>
+                <span class="skill-tag">Sensors</span>
+                <span class="skill-tag">PCB Design</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>   -->
+
       <section id="competitions" class="section alt">
         <div class="container">
           <h3><i class="fas fa-trophy"></i> Competitions</h3>
           <div class="card edu-card">
-            <img src="assets/crn.jpg" alt="CSD Robocon NITK Logo" class="edu-logo robocon-logo" loading="lazy" />
+            <img src="assets/crn.jpg" alt="CSD Robocon NITK Logo" class="edu-logo" />
             <div class="edu-text">
-              <h4>ABU Robocon (International Robotics Competition)</h4>
+              <h4>ABU Robocon</h4>
               <p><em>Team: CSD Robocon NITK, Mangalore, India</em></p>
-              <p>
-                <a href="https://robocon.nitk.ac.in/" target="_blank" class="btn-outline" rel="noopener noreferrer">Visit Team Website</a>
-              </p>
-              <p><strong>My Journey</strong></p>
-              <p>
-                I began as an <b>electronics and programming systems member</b>, designing circuits, wiring sensors, 
-                and programming microcontrollers to bring our robots to life. Later, I mentored juniors, made design choices, 
-                and coordinated across subsystems. Eventually, I stepped up as <b>Vice Captain</b>, guiding a <b>40+ member team</b> and leading our journey to the <b>ABU Robocon stage</b>.
-              </p>
+              <p><a href="https://robocon.nitk.ac.in/" target="_blank" class="btn-outline" style="display: inline-block; margin: 0.5rem 0;">Visit Team Website</a></p>
+              <p>Started as an electronics and programming systems member, later mentored juniors and coordinated across subsystems. Eventually stepped up as <strong>Vice Captain</strong>, guiding a <strong>40+ member team</strong> to the ABU Robocon stage.</p>
               <div class="image-row">
-                <img src="assets/crn1.jpg" alt="Robot Build Process" loading="lazy" />
-                <img src="assets/crn2.jpg" alt="Team CSD Robocon NITK Group Photo" loading="lazy" />
-                <img src="assets/crn3.jpg" alt="Robot in Action" loading="lazy" />
-                <img src="assets/crn4.jpg" alt="Robot Competing at Robocon" loading="lazy" />
+                <img src="assets/crn1.jpg" alt="Robot Build Process" />
+                <img src="assets/crn2.jpg" alt="Team CSD Robocon NITK" />
+                <img src="assets/crn3.jpg" alt="Robot in Action" />
+                <img src="assets/crn4.jpg" alt="Robot at Competition" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Education -->
       <section id="education" class="section">
         <div class="container">
           <h3><i class="fas fa-graduation-cap"></i> Education</h3>
           <div class="edu-skills-grid">
             <div class="card edu-card">
-              <img src="assets/TAMU_logo.png" alt="Texas A&M University Logo" class="edu-logo tamu-logo" loading="lazy" />
+              <img src="assets/TAMU_logo.png" alt="Texas A&M University Logo" class="edu-logo" />
               <div class="edu-text">
-                <h4>Texas A&amp;M University</h4>
+                <h4>Texas A&M University</h4>
                 <p><em>College Station, Texas, USA</em></p>
                 <p><strong>Master of Science in Electrical Engineering</strong><br>Aug 2025 – May 2027</p>
               </div>
             </div>
             <div class="card edu-card">
-              <img src="assets/NITK_Logo.png" alt="NITK Surathkal Logo" class="edu-logo nitk-logo" loading="lazy" />
+              <img src="assets/NITK_Logo.png" alt="NITK Surathkal Logo" class="edu-logo" />
               <div class="edu-text">
-                <h4>National Institute of Technology Karnataka, Surathkal</h4>
+                <h4>National Institute of Technology Karnataka</h4>
                 <p><em>Mangalore, India</em></p>
                 <p><strong>Bachelor of Technology in Electrical and Electronics Engineering</strong><br>Dec 2021 – May 2025</p>
               </div>
@@ -214,109 +1005,215 @@
         </div>
       </section>
 
-      <!-- Experience -->
-      <section id="experience" class="section">
+      <section id="experience" class="section alt">
         <div class="container">
           <h3><i class="fas fa-briefcase"></i> Experience</h3>
-          <div class="edu-skills-grid">
-            <div class="card edu-card">
-              <img src="assets/IIST_logo.png" alt="IIST Logo" class="edu-logo iist-logo" loading="lazy" />
-              <div class="edu-text">
-                <h4>Indian Institute of Space Science and Technology</h4>
-                <p><em>Thiruvananthapuram, India</em></p>
-                <p><strong>Summer Research Intern</strong><br>May 2024 – Jul 2024</p>
-                <p>Received Indian Academy of Science Summer Research Fellowship</p>
-              </div>
+          <div class="card edu-card">
+            <img src="assets/IIST_logo.png" alt="IIST Logo" class="edu-logo" />
+            <div class="edu-text">
+              <h4>Indian Institute of Space Science and Technology</h4>
+              <p><em>Thiruvananthapuram, India</em></p>
+              <p><strong>Summer Research Intern</strong><br>May 2024 – Jul 2024</p>
+              <p>Received Indian Academy of Science Summer Research Fellowship</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Contact -->
-
-<section id="contact" class="section contact-section" data-aos="fade-up">
-  <div class="container">
-    <h3>Contact</h3>
-    <p>Let’s connect! I’m always excited to collaborate on robotics, AI, and autonomous vehicles.</p>
-    
-    <form action="https://formspree.io/f/xgvnvrla" method="POST" class="contact-form">
-      <label for="name">Name</label>
-      <input id="name" type="text" name="name" placeholder="Your name" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
-
-      <button type="submit" class="btn">Send Message</button>
-    </form>
-  </div>
-</section>
-
+      <section id="contact" class="section">
+        <div class="container">
+          <h3><i class="fas fa-envelope"></i> Contact</h3>
+          <p style="text-align: center; font-size: 1.05rem; margin-bottom: 2rem;">Let's connect! I'm always excited to collaborate on robotics, AI, and autonomous vehicles.</p>
+          <form action="https://formspree.io/f/xgvnvrla" method="POST" class="contact-form">
+            <label for="name">Name</label>
+            <input id="name" type="text" name="name" placeholder="Your name" required>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </section>
     </section>
 
-    <!-- ================= Exploring Section ================= -->
-    <section id="exploringSection" class="section" style="display: none;">
-      <div class="container">
+    <section id="exploringSection" style="display: none;">
+      <div class="container" style="padding: 80px 20px;">
         <h3><i class="fas fa-hiking"></i> Exploring</h3>
-        <p>I love traveling and sharing my adventures. Here I’ll post travel stories, photos, and guides.</p>
+        <p style="font-size: 1.05rem; margin-bottom: 2rem;">I love traveling and sharing my adventures. Here are some travel stories, photos, and guides.</p>
         <div class="travel-grid">
-          <article class="project-card">
+          <article class="project-card visible">
             <div class="image-row">
-              <img src="assets/kalsubai1.jpg" alt="Kalsubai Trek View 1" loading="lazy" />
-              <img src="assets/kalsubai2.jpg" alt="Kalsubai Trek View 2" loading="lazy" />
-              <img src="assets/kalsubai3.jpg" alt="Kalsubai Trek View 3" loading="lazy" />
+              <img src="assets/kalsubai1.jpg" alt="Kalsubai Trek View 1" />
+              <img src="assets/kalsubai2.jpg" alt="Kalsubai Trek View 2" />
+              <img src="assets/kalsubai3.jpg" alt="Kalsubai Trek View 3" />
             </div>
             <h4>Kalsubai Trek</h4>
-            <p>Above the clouds at Maharashtra’s highest peak — every step was a mix of sweat, thrill, and stunning views worth the climb.</p>
+            <p>Above the clouds at Maharashtra's highest peak — every step was a mix of sweat, thrill, and stunning views worth the climb.</p>
           </article>
-          <article class="project-card">
+          <article class="project-card visible">
             <div class="image-row">
-              <img src="assets/kudremukh3.jpg" alt="Kudremukh Trek View 1" loading="lazy" />
-              <img src="assets/kudremukh2.jpg" alt="Kudremukh Trek View 2" loading="lazy" />
-              <img src="assets/kudremukh1.jpg" alt="Kudremukh Trek View 3" loading="lazy" />
+              <img src="assets/kudremukh3.jpg" alt="Kudremukh Trek View 1" />
+              <img src="assets/kudremukh2.jpg" alt="Kudremukh Trek View 2" />
+              <img src="assets/kudremukh1.jpg" alt="Kudremukh Trek View 3" />
             </div>
             <h4>Kudremukh Trek</h4>
-            <p>Trekking through Kudremukh — where every step unveils misty hills, lush forests, and the serene beauty of Karnataka’s highlands.</p>
+            <p>Trekking through Kudremukh — where every step unveils misty hills, lush forests, and the serene beauty of Karnataka's highlands.</p>
           </article>
         </div>
       </div>
     </section>
-    <!-- ================= /Exploring Section ================= -->
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Dev Goti — Life is Adventure | <a href="/privacy.html">Privacy Policy</a></p>
-
+      <p>© <span id="year"></span> Dev Goti — Life is Adventure</p>
     </div>
   </footer>
 
-  <!-- Scroll-to-top button -->
   <button id="scrollTopBtn" title="Go to top" style="display:none;">⬆</button>
 
-  <script src="script.js"></script>
   <script>
-    // Dynamic year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Scroll-to-top
-    const scrollTopBtn = document.getElementById("scrollTopBtn");
-    window.onscroll = function() {
-      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        scrollTopBtn.style.display = "block";
-      } else {
-        scrollTopBtn.style.display = "none";
+    // Prevent screenshots and downloads
+    document.addEventListener('keyup', (e) => {
+      if (e.key == 'PrintScreen') {
+        navigator.clipboard.writeText('');
+        alert('Screenshots are disabled on this website');
       }
-    };
-    scrollTopBtn.onclick = function() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    };
+    });
 
-  // Disable right-click on whole page
-  document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-  });
-</script>
+    document.addEventListener('keydown', (e) => {
+      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
+        e.preventDefault();
+        return false;
+      }
+    });
 
+    // Section scroll animations
+    const sections = document.querySelectorAll('.section');
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    // Project cards animation
+    const projectCards = document.querySelectorAll('.project-card');
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, index * 100);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    projectCards.forEach(card => cardObserver.observe(card));
+
+    // Dark mode toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle.querySelector('i');
+    const currentTheme = localStorage.getItem('theme') || 'light';
+
+    if (currentTheme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      themeIcon.classList.replace('fa-moon', 'fa-sun');
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        themeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
+
+    // Project filters
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projects = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+        
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        projects.forEach(project => {
+          if (filter === 'all') {
+            project.classList.remove('hidden');
+          } else {
+            const categories = project.getAttribute('data-category');
+            if (categories && categories.includes(filter)) {
+              project.classList.remove('hidden');
+            } else {
+              project.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+
+    // Mobile menu toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('nav').classList.toggle('active');
+    });
+
+    // Section switching
+    document.querySelectorAll('.main-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const section = tab.dataset.section;
+        document.getElementById('portfolioSection').style.display = section === 'portfolio' ? 'block' : 'none';
+        document.getElementById('exploringSection').style.display = section === 'exploring' ? 'block' : 'none';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.getElementById('nav').classList.remove('active');
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+
+    // Scroll to top button
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 200) {
+        scrollTopBtn.style.display = 'block';
+      } else {
+        scrollTopBtn.style.display = 'none';
+      }
+    });
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Disable right-click
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+  </script>
 </body>
 </html>
