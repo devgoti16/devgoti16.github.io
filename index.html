@@ -17,7 +17,7 @@
   <meta property="og:url" content="https://devgoti16.github.io" />
   <meta property="og:title" content="Dev Goti Portfolio" />
   <meta property="og:description" content="Curious Mind, Adventure seeker and Robot builder" />
-  <meta property="og:image" content="https://devgoti16.github.io/assets/profile.JPG" />
+  <meta property="og:image" content="https://devgoti16.github.io/assets/kudremukh3.JPG" />
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
@@ -68,6 +68,19 @@
       transition: background 0.3s, color 0.3s;
     }
 
+
+
+    /* Scroll Progress Indicator */
+    #scrollProgress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--black), var(--medium-gray));
+      z-index: 9999;
+      transition: width 0.1s;
+    }
+
     /* Prevent screenshot and download */
     img {
       pointer-events: none;
@@ -77,8 +90,6 @@
       -o-user-drag: none;
       user-drag: none;
     }
-
-
 
     .container {
       max-width: 1200px;
@@ -178,6 +189,348 @@
     /* Hero */
     .hero {
       padding: 60px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Animated Background Robots */
+    .robot-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.1;
+    }
+
+    /* Mobile Robot */
+    .mobile-robot {
+      position: absolute;
+      top: 20%;
+      left: -15%;
+      animation: moveRobot 25s linear infinite;
+    }
+
+    .robot-body {
+      width: 60px;
+      height: 80px;
+      background: var(--dark-gray);
+      border-radius: 8px;
+      position: relative;
+      border: 2px solid var(--black);
+    }
+
+    .robot-head {
+      width: 50px;
+      height: 40px;
+      background: var(--dark-gray);
+      border: 2px solid var(--black);
+      border-radius: 5px;
+      position: absolute;
+      top: -45px;
+      left: 5px;
+    }
+
+    .robot-eye {
+      width: 10px;
+      height: 10px;
+      background: var(--black);
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      animation: blink 3s infinite;
+    }
+
+    .robot-eye.left { left: 10px; }
+    .robot-eye.right { right: 10px; }
+
+    @keyframes blink {
+      0%, 48%, 52%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .robot-antenna {
+      width: 2px;
+      height: 15px;
+      background: var(--black);
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .robot-antenna::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--black);
+      border-radius: 50%;
+      position: absolute;
+      top: -6px;
+      left: -2px;
+    }
+
+    .robot-wheel {
+      width: 20px;
+      height: 20px;
+      background: var(--black);
+      border-radius: 50%;
+      position: absolute;
+      bottom: -10px;
+      animation: spin 1s linear infinite;
+    }
+
+    .robot-wheel.left { left: 5px; }
+    .robot-wheel.right { right: 5px; }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes moveRobot {
+      0% { 
+        left: -15%;
+        transform: translateY(0);
+      }
+      25% {
+        transform: translateY(-10px);
+      }
+      50% { 
+        left: 50%;
+        transform: translateY(0);
+      }
+      75% {
+        transform: translateY(-10px);
+      }
+      100% { 
+        left: 115%;
+        transform: translateY(0);
+      }
+    }
+
+    /* Robotic Arm Animation */
+    .robotic-arm {
+      position: absolute;
+      bottom: 15%;
+      right: 8%;
+    }
+
+    .arm-base {
+      width: 60px;
+      height: 30px;
+      background: var(--dark-gray);
+      border: 2px solid var(--black);
+      border-radius: 5px;
+      position: relative;
+    }
+
+    .arm-segment1 {
+      width: 15px;
+      height: 80px;
+      background: var(--dark-gray);
+      border: 2px solid var(--black);
+      border-radius: 8px;
+      position: absolute;
+      bottom: 25px;
+      left: 20px;
+      transform-origin: bottom center;
+      animation: armRotate1 4s ease-in-out infinite;
+    }
+
+    .arm-segment2 {
+      width: 12px;
+      height: 60px;
+      background: var(--dark-gray);
+      border: 2px solid var(--black);
+      border-radius: 6px;
+      position: absolute;
+      top: -58px;
+      left: 1px;
+      transform-origin: bottom center;
+      animation: armRotate2 4s ease-in-out infinite;
+    }
+
+    .arm-gripper {
+      width: 20px;
+      height: 8px;
+      background: var(--black);
+      position: absolute;
+      top: -10px;
+      left: -4px;
+      border-radius: 3px;
+    }
+
+    .arm-gripper::before,
+    .arm-gripper::after {
+      content: '';
+      width: 8px;
+      height: 3px;
+      background: var(--black);
+      position: absolute;
+      top: -5px;
+    }
+
+    .arm-gripper::before { left: 2px; }
+    .arm-gripper::after { right: 2px; }
+
+    @keyframes armRotate1 {
+      0%, 100% { transform: rotate(-30deg); }
+      50% { transform: rotate(30deg); }
+    }
+
+    @keyframes armRotate2 {
+      0%, 100% { transform: rotate(20deg); }
+      50% { transform: rotate(-40deg); }
+    }
+
+    /* Drone Animation */
+    .drone {
+      position: absolute;
+      bottom: 15%;
+      left: 10%;
+      animation: droneHoverArea 8s ease-in-out infinite;
+    }
+
+    .drone-body {
+      width: 50px;
+      height: 30px;
+      background: var(--dark-gray);
+      border: 2px solid var(--black);
+      border-radius: 15px;
+      position: relative;
+    }
+
+    .drone-camera {
+      width: 15px;
+      height: 15px;
+      background: var(--black);
+      border-radius: 50%;
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .propeller {
+      position: absolute;
+      width: 35px;
+      height: 4px;
+      background: var(--black);
+      animation: propellerSpin 0.3s linear infinite;
+    }
+
+    .propeller.tl {
+      top: -15px;
+      left: -15px;
+      transform-origin: center;
+    }
+
+    .propeller.tr {
+      top: -15px;
+      right: -15px;
+      transform-origin: center;
+    }
+
+    .propeller.bl {
+      bottom: -15px;
+      left: -15px;
+      transform-origin: center;
+    }
+
+    .propeller.br {
+      bottom: -15px;
+      right: -15px;
+      transform-origin: center;
+    }
+
+    @keyframes propellerSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes droneHoverArea {
+      0% {
+        transform: translate(0, 0);
+      }
+      15% {
+        transform: translate(-30px, -20px);
+      }
+      30% {
+        transform: translate(-50px, 10px);
+      }
+      45% {
+        transform: translate(-30px, 30px);
+      }
+      60% {
+        transform: translate(20px, 20px);
+      }
+      75% {
+        transform: translate(40px, -10px);
+      }
+      90% {
+        transform: translate(20px, -25px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    /* Circuit Lines Background */
+    .circuit-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.05;
+    }
+
+    .circuit-line {
+      position: absolute;
+      background: var(--black);
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .line1 {
+      width: 2px;
+      height: 100px;
+      top: 20%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    .line2 {
+      width: 150px;
+      height: 2px;
+      top: 25%;
+      left: 10%;
+      animation-delay: 1s;
+    }
+
+    .line3 {
+      width: 2px;
+      height: 80px;
+      top: 50%;
+      right: 20%;
+      animation-delay: 2s;
+    }
+
+    .line4 {
+      width: 120px;
+      height: 2px;
+      bottom: 30%;
+      right: 15%;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        opacity: 0.05;
+      }
+      50% {
+        opacity: 0.15;
+      }
     }
 
     .hero-grid {
@@ -185,6 +538,8 @@
       grid-template-columns: 1.2fr 1fr;
       gap: 4rem;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-text h2 {
@@ -201,17 +556,7 @@
       border-bottom: 4px solid var(--black);
     }
 
-    .elevator-pitch {
-      font-size: 1.15rem;
-      color: var(--dark-gray);
-      margin: 1rem 0 1.5rem;
-      padding: 1rem;
-      background: var(--light-gray);
-      border-left: 4px solid var(--black);
-      border-radius: 4px;
-      opacity: 0;
-      animation: fadeInUp 0.8s 0.2s forwards;
-    }
+
 
     .hero-text p {
       font-size: 1.05rem;
@@ -281,6 +626,7 @@
     .hero-photo {
       opacity: 0;
       animation: fadeInUp 0.8s 0.6s forwards;
+      perspective: 1000px;
     }
 
     .hero-photo img {
@@ -291,8 +637,9 @@
       transition: transform 0.3s;
     }
 
+    /* Image Tilt Effect */
     .hero-photo img:hover {
-      transform: scale(1.02);
+      transform: rotateY(5deg) rotateX(5deg) scale(1.02);
     }
 
     /* Sections */
@@ -333,53 +680,39 @@
       max-width: 900px;
     }
 
-    /* Skills Section */
-    .skills-grid {
+    /* Stats Counter */
+    .stats-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 2rem;
-      margin-top: 2rem;
+      margin: 2rem 0;
     }
 
-    .skill-category {
+    .stat-box {
+      text-align: center;
+      padding: 2rem;
       background: var(--white);
-      padding: 1.5rem;
       border-radius: 8px;
       border: 2px solid var(--light-gray);
       transition: all 0.3s;
     }
 
-    .skill-category:hover {
-      border-color: var(--medium-gray);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    .stat-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
 
-    .skill-category h4 {
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
       color: var(--black);
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
-    .skill-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .skill-tag {
-      padding: 0.5rem 1rem;
-      background: var(--light-gray);
+    .stat-label {
+      font-size: 1rem;
       color: var(--dark-gray);
-      border-radius: 20px;
-      font-size: 0.9rem;
-      transition: all 0.3s;
-    }
-
-    .skill-tag:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-2px);
+      font-weight: 500;
     }
 
     /* Project Filters */
@@ -408,6 +741,7 @@
       background: var(--black);
       color: var(--white);
       border-color: var(--black);
+      transform: translateY(-2px);
     }
 
     /* Projects Grid */
@@ -427,6 +761,7 @@
       transition: all 0.3s;
       opacity: 0;
       transform: translateY(20px);
+      perspective: 1000px;
     }
 
     .project-card.visible {
@@ -456,11 +791,29 @@
       width: 100%;
       height: 220px;
       object-fit: cover;
-      transition: transform 0.3s;
+      transition: transform 0.5s;
     }
 
+    /* Hover Zoom with Tilt */
     .project-card:hover img {
-      transform: scale(1.05);
+      transform: scale(1.15) rotate(2deg);
+    }
+
+    /* Image Overlay on Hover */
+    .project-img-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(26,26,26,0) 0%, rgba(26,26,26,0.7) 100%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover .project-img-container::after {
+      opacity: 1;
     }
 
     .project-card h4 {
@@ -490,6 +843,13 @@
       color: var(--dark-gray);
       border-radius: 15px;
       font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+
+    .project-tag:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: scale(1.05);
     }
 
     .btn {
@@ -503,6 +863,27 @@
       font-weight: 600;
       transition: all 0.3s;
       font-size: 0.9rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Button Ripple Effect */
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    .btn:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     .btn:hover {
@@ -582,7 +963,7 @@
     }
 
     .image-row img:hover {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
 
     /* Contact Form */
@@ -670,7 +1051,7 @@
     }
 
     #scrollTopBtn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-3px) rotate(360deg);
     }
 
     /* Animations */
@@ -697,7 +1078,7 @@
       }
 
       .hero-photo img {
-        max-width: 200px;
+        max-width: 300px;
         margin: 0 auto;
       }
 
@@ -723,8 +1104,19 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .skills-grid {
+      .stats-container {
         grid-template-columns: 1fr;
+      }
+
+      /* Hide some background animations on mobile */
+      .mobile-robot,
+      .robotic-arm,
+      .drone {
+        transform: scale(0.7);
+      }
+
+      .circuit-lines {
+        opacity: 0.03;
       }
     }
 
@@ -765,6 +1157,9 @@
   </style>
 </head>
 <body>
+  <!-- Scroll Progress -->
+  <div id="scrollProgress"></div>
+
   <header class="site-header">
     <div class="container header-inner">
       <div class="brand">
@@ -786,6 +1181,52 @@
   <main>
     <section id="portfolioSection">
       <section id="hero" class="hero">
+        <!-- Animated Robot Background -->
+        <div class="robot-animation">
+          <!-- Mobile Robot -->
+          <div class="mobile-robot">
+            <div class="robot-body">
+              <div class="robot-head">
+                <div class="robot-antenna"></div>
+                <div class="robot-eye left"></div>
+                <div class="robot-eye right"></div>
+              </div>
+              <div class="robot-wheel left"></div>
+              <div class="robot-wheel right"></div>
+            </div>
+          </div>
+          
+          <!-- Robotic Arm -->
+          <div class="robotic-arm">
+            <div class="arm-base">
+              <div class="arm-segment1">
+                <div class="arm-segment2">
+                  <div class="arm-gripper"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Drone -->
+          <div class="drone">
+            <div class="drone-body">
+              <div class="drone-camera"></div>
+              <div class="propeller tl"></div>
+              <div class="propeller tr"></div>
+              <div class="propeller bl"></div>
+              <div class="propeller br"></div>
+            </div>
+          </div>
+          
+          <!-- Circuit Lines -->
+          <div class="circuit-lines">
+            <div class="circuit-line line1"></div>
+            <div class="circuit-line line2"></div>
+            <div class="circuit-line line3"></div>
+            <div class="circuit-line line4"></div>
+          </div>
+        </div>
+
         <div class="container hero-grid">
           <div class="hero-text">
             <h2>Hello, I'm <span class="dev-name">Dev</span></h2>
@@ -812,7 +1253,7 @@
             </div>
           </div>
           <div class="hero-photo">
-            <img src="assets/profile.JPG" alt="Dev Goti - Robotics Engineer" />
+            <img src="assets/profile.JPG" alt="Dev Goti - Robotics Engineer" id="heroImage" />
           </div>
         </div>
       </section>
@@ -823,9 +1264,9 @@
           <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem;">Engineer. Explorer. Dreamer of autonomous worlds.</p>
           <p>Fascinated by how machines can learn, adapt, and move with purpose, I enjoy working at the crossroads of robotics and AI, where imagination meets engineering, and where robots are shaped to navigate complex, dynamic environments.</p>
           <p>Currently pursuing my Master's at Texas A&M University, I focus on challenges in <strong>autonomous navigation, planning, perception, and control</strong>, always aiming to bridge the gap between theory and real-world applications of intelligent machines.</p>
-        </div>
+          
+                  </div>
       </section>
-
 
       <section id="projects" class="section">
         <div class="container">
@@ -912,53 +1353,6 @@
           </div>
         </div>
       </section>
-
-
-<!-- <section id="skills" class="section alt">
-        <div class="container">
-          <h3><i class="fas fa-code"></i> Skills</h3>
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h4>Programming</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">MATLAB</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4>Robotics & Control</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">ROS / ROS 2</span>
-                <span class="skill-tag">Gazebo</span>
-                <span class="skill-tag">Navigation</span>
-                <span class="skill-tag">Path Planning</span>
-                <span class="skill-tag">SLAM</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4>AI & ML </h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Deep RL </span>
-                <span class="skill-tag">TensorFlow</span>
-                <span class="skill-tag">PyTorch</span>
-                <span class="skill-tag">OpenCV</span>
-                <span class="skill-tag">Computer Vision</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h4>Hardware & Embedded</h4>
-              <div class="skill-tags">
-                <span class="skill-tag">Arduino</span>
-                <span class="skill-tag">Raspberry Pi</span>
-                <span class="skill-tag">LiDAR</span>
-                <span class="skill-tag">Sensors</span>
-                <span class="skill-tag">PCB Design</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>   -->
 
       <section id="competitions" class="section alt">
         <div class="container">
@@ -1072,6 +1466,61 @@
   <button id="scrollTopBtn" title="Go to top" style="display:none;">⬆</button>
 
   <script>
+    // Scroll Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+
+    // Stats Counter Animation
+    const statNumbers = document.querySelectorAll('.stat-number');
+    let statsAnimated = false;
+
+    const animateStats = () => {
+      statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'));
+        const increment = target / 100;
+        let current = 0;
+
+        const updateCount = () => {
+          if (current < target) {
+            current += increment;
+            stat.textContent = Math.ceil(current);
+            setTimeout(updateCount, 20);
+          } else {
+            stat.textContent = target + '+';
+          }
+        };
+
+        updateCount();
+      });
+      statsAnimated = true;
+    };
+
+    // Image Tilt Effect on Mouse Move
+    const heroImage = document.getElementById('heroImage');
+    if (heroImage) {
+      heroImage.addEventListener('mousemove', (e) => {
+        const rect = heroImage.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        
+        heroImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+      });
+
+      heroImage.addEventListener('mouseleave', () => {
+        heroImage.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+      });
+    }
+
     // Prevent screenshots and downloads
     document.addEventListener('keyup', (e) => {
       if (e.key == 'PrintScreen') {
@@ -1081,7 +1530,6 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
       if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
         e.preventDefault();
         return false;
@@ -1094,6 +1542,11 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          
+          // Animate stats when about section is visible
+          if (entry.target.id === 'about' && !statsAnimated) {
+            animateStats();
+          }
         }
       });
     }, { threshold: 0.1 });
