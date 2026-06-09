@@ -5,1717 +5,1081 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dev Goti Portfolio</title>
   <link rel="icon" href="assets/dglogo.jpeg">
-  
-  <!-- SEO Meta Tags -->
-  <meta name="description" content="Dev Goti Portfolio" />
-  <meta name="keywords" content="Dev Goti, Robotics Engineer, AI Researcher, ROS, Deep Learning, Autonomous Navigation, Texas A&M, NITK, ABU Robocon, NITK, Perception, Planning, Control" />
+  <meta name="description" content="Dev Goti — Robotics Engineer focused on Perception, SLAM, and Autonomy" />
+  <meta name="keywords" content="Dev Goti, Robotics Engineer, SLAM, Perception, Autonomous Navigation, Texas A&M, ROS, Deep Learning" />
   <meta name="author" content="Dev Goti" />
   <meta name="robots" content="index, follow" />
-  
-  <!-- Open Graph / Facebook / LinkedIn -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://devgoti16.github.io" />
   <meta property="og:title" content="Dev Goti Portfolio" />
-  <meta property="og:description" content="Curious Mind, Adventure seeker and Robot builder" />
+  <meta property="og:description" content="Robotics Engineer · Perception · SLAM · Autonomy" />
   <meta property="og:image" content="https://devgoti16.github.io/assets/kudremukh3.JPG" />
-  
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:url" content="https://devgoti16.github.io" />
-  <meta name="twitter:title" content="Dev Goti Portfolio" />
-  <meta name="twitter:description" content="Curious Mind, Adventure seeker and Robot builder" />
-  <meta name="twitter:image" content="https://devgoti16.github.io/assets/kudremukh3.JPG" />
-  
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://devgoti16.github.io" />
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+    /* ── RESET ── */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
 
+    /* ── VARIABLES ── */
     :root {
-      --white: #ffffff;
-      --light-gray: #f5f5f5;
-      --medium-gray: #9e9e9e;
-      --dark-gray: #424242;
-      --black: #1a1a1a;
-      --pure-black: #000000;
+      --bg:          #ffffff;
+      --bg2:         #f8f8f8;
+      --bg3:         #f2f2f2;
+      --text:        #111111;
+      --text2:       #555555;
+      --text3:       #999999;
+      --border:      #e5e5e5;
+      --border2:     #d0d0d0;
+      --accent:      #2563eb;
+      --accent-bg:   #eff6ff;
+      --pill-bg:     rgba(255,255,255,0.85);
+      --pill-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-
     [data-theme="dark"] {
-      --white: #1a1a1a;
-      --light-gray: #2a2a2a;
-      --medium-gray: #b0b0b0;
-      --dark-gray: #e0e0e0;
-      --black: #ffffff;
-      --pure-black: #ffffff;
+      --bg:          #0e0e0e;
+      --bg2:         #171717;
+      --bg3:         #1f1f1f;
+      --text:        #f0f0f0;
+      --text2:       #aaaaaa;
+      --text3:       #666666;
+      --border:      #2a2a2a;
+      --border2:     #3a3a3a;
+      --accent:      #60a5fa;
+      --accent-bg:   #1e3a5f;
+      --pill-bg:     rgba(20,20,20,0.90);
+      --pill-shadow: 0 4px 24px rgba(0,0,0,0.40);
     }
 
+    /* ── BASE ── */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: var(--white);
-      color: var(--black);
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
       line-height: 1.6;
       overflow-x: hidden;
       transition: background 0.3s, color 0.3s;
     }
+    img { pointer-events: none; -webkit-user-drag: none; user-select: none; }
 
-
-
-    /* Scroll Progress Indicator */
+    /* ── SCROLL PROGRESS ── */
     #scrollProgress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--black), var(--medium-gray));
-      z-index: 9999;
-      transition: width 0.1s;
+      position: fixed; top:0; left:0; height:2px;
+      background: var(--accent); z-index:9999; transition: width 0.1s;
     }
 
-    /* Prevent screenshot and download */
-    img {
-      pointer-events: none;
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      user-drag: none;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    /* Header */
+    /* ── NAV ── */
     .site-header {
-      position: sticky;
-      top: 0;
-      width: 100%;
-      background: var(--white);
-      padding: 1.2rem 0;
-      z-index: 1000;
-      border-bottom: 2px solid var(--light-gray);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      transition: background 0.3s;
+      position: fixed; top:20px; left:50%; transform:translateX(-50%);
+      z-index:1000; width:calc(100% - 40px); max-width:900px;
     }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .nav-pill {
+      background: var(--pill-bg);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius:100px;
+      box-shadow: var(--pill-shadow);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0.5rem 0.6rem 0.5rem 1.4rem;
+      transition: background 0.3s, border 0.3s;
     }
-
-    .brand h1 {
-      font-size: 1.6rem;
-      color: var(--black);
-      margin-bottom: 0;
-      font-weight: 700;
+    .nav-brand {
+      font-family:'Syne',sans-serif; font-size:0.95rem; font-weight:700;
+      color:var(--text); text-decoration:none; white-space:nowrap;
     }
-
-    .tagline {
-      font-size: 0.85rem;
-      color: var(--medium-gray);
-      margin-top: 0.2rem;
+    .nav-links { display:flex; align-items:center; gap:0.2rem; list-style:none; }
+    .nav-links a {
+      color:var(--text2); text-decoration:none; font-size:0.85rem; font-weight:500;
+      padding:0.45rem 1rem; border-radius:100px; transition:all 0.2s; white-space:nowrap;
     }
-
-    .nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
+    .nav-links a:hover, .nav-links a.active { background:var(--text); color:var(--bg); }
+    .nav-right { display:flex; align-items:center; gap:0.4rem; }
+    .nav-btn {
+      padding:0.45rem 1.1rem; background:var(--text); color:var(--bg);
+      border:none; border-radius:100px; font-size:0.82rem; font-weight:600;
+      cursor:pointer; text-decoration:none; transition:opacity 0.2s; white-space:nowrap;
     }
-
-    .nav a {
-      color: var(--dark-gray);
-      text-decoration: none;
-      transition: all 0.3s;
-      font-size: 0.95rem;
-      font-weight: 500;
+    .nav-btn:hover { opacity:0.8; }
+    .theme-btn {
+      width:36px; height:36px; background:var(--bg3); border:1px solid var(--border);
+      border-radius:50%; cursor:pointer; color:var(--text2); font-size:0.85rem;
+      display:flex; align-items:center; justify-content:center; transition:all 0.2s; flex-shrink:0;
     }
+    .theme-btn:hover { background:var(--border); }
+    .nav-toggle { display:none; background:none; border:none; color:var(--text); font-size:1.3rem; cursor:pointer; }
 
-    .nav a:hover,
-    .nav a.active {
-      color: var(--black);
-    }
+    /* ── PAGE ── */
+    .page-content { padding-top:90px; }
 
-    .resume-btn {
-      padding: 0.6rem 1.5rem !important;
-      background: var(--black) !important;
-      color: var(--white) !important;
-      border-radius: 6px;
-      font-weight: 600;
-    }
-
-    .resume-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .theme-toggle {
-      background: none;
-      border: 2px solid var(--black);
-      color: var(--black);
-      padding: 0.5rem 0.8rem;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: all 0.3s;
-    }
-
-    .theme-toggle:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--black);
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* Hero */
+    /* ── HERO ── */
     .hero {
-      padding: 60px 0 80px;
-      position: relative;
-      overflow: hidden;
+      min-height:calc(100vh - 90px);
+      display:flex; flex-direction:column; justify-content:center;
+      padding:60px 20px 80px; max-width:1000px; margin:0 auto;
+    }
+    .hero-name {
+      font-family:'Syne',sans-serif;
+      font-size:clamp(72px, 13vw, 140px);
+      font-weight:800; line-height:0.92; letter-spacing:-3px;
+      color:var(--text); margin-bottom:1.5rem;
+    }
+    .hero-name .outline { -webkit-text-stroke:2px var(--text); color:transparent; }
+    .hero-bottom {
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:2rem; flex-wrap:wrap;
+    }
+    .hero-desc { font-size:1.05rem; color:var(--text2); max-width:460px; line-height:1.7; }
+    .hero-desc strong { color:var(--text); font-weight:600; }
+    .hero-actions { display:flex; flex-direction:column; align-items:flex-end; gap:1rem; }
+    .hero-cta {
+      padding:0.75rem 2rem; background:var(--text); color:var(--bg);
+      border-radius:100px; text-decoration:none; font-weight:600;
+      font-size:0.9rem; transition:opacity 0.2s; white-space:nowrap;
+    }
+    .hero-cta:hover { opacity:0.75; }
+    .hero-socials { display:flex; gap:0.6rem; }
+    .hero-socials a {
+      width:38px; height:38px; border:1px solid var(--border2); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--text2); font-size:0.9rem; text-decoration:none; transition:all 0.2s;
+    }
+    .hero-socials a:hover { background:var(--text); color:var(--bg); border-color:var(--text); }
+    .hero-stats {
+      display:flex; gap:2.5rem; margin-top:3rem;
+      padding-top:2rem; border-top:1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800;
+      color:var(--text); letter-spacing:-1px;
+    }
+    .hero-stat-label {
+      font-size:0.72rem; color:var(--text3);
+      text-transform:uppercase; letter-spacing:0.07em; margin-top:2px;
     }
 
-    /* Animated Background Robots */
-    .robot-animation {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.1;
-    }
-
-    /* Mobile Robot */
-    .mobile-robot {
-      position: absolute;
-      top: 20%;
-      left: -15%;
-      animation: moveRobot 25s linear infinite;
-    }
-
-    .robot-body {
-      width: 60px;
-      height: 80px;
-      background: var(--dark-gray);
-      border-radius: 8px;
-      position: relative;
-      border: 2px solid var(--black);
-    }
-
-    .robot-head {
-      width: 50px;
-      height: 40px;
-      background: var(--dark-gray);
-      border: 2px solid var(--black);
-      border-radius: 5px;
-      position: absolute;
-      top: -45px;
-      left: 5px;
-    }
-
-    .robot-eye {
-      width: 10px;
-      height: 10px;
-      background: var(--black);
-      border-radius: 50%;
-      position: absolute;
-      top: 15px;
-      animation: blink 3s infinite;
-    }
-
-    .robot-eye.left { left: 10px; }
-    .robot-eye.right { right: 10px; }
-
-    @keyframes blink {
-      0%, 48%, 52%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .robot-antenna {
-      width: 2px;
-      height: 15px;
-      background: var(--black);
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .robot-antenna::after {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background: var(--black);
-      border-radius: 50%;
-      position: absolute;
-      top: -6px;
-      left: -2px;
-    }
-
-    .robot-wheel {
-      width: 20px;
-      height: 20px;
-      background: var(--black);
-      border-radius: 50%;
-      position: absolute;
-      bottom: -10px;
-      animation: spin 1s linear infinite;
-    }
-
-    .robot-wheel.left { left: 5px; }
-    .robot-wheel.right { right: 5px; }
-
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes moveRobot {
-      0% { 
-        left: -15%;
-        transform: translateY(0);
-      }
-      25% {
-        transform: translateY(-10px);
-      }
-      50% { 
-        left: 50%;
-        transform: translateY(0);
-      }
-      75% {
-        transform: translateY(-10px);
-      }
-      100% { 
-        left: 115%;
-        transform: translateY(0);
-      }
-    }
-
-    /* Robotic Arm Animation */
-    .robotic-arm {
-      position: absolute;
-      bottom: 15%;
-      right: 8%;
-    }
-
-    .arm-base {
-      width: 60px;
-      height: 30px;
-      background: var(--dark-gray);
-      border: 2px solid var(--black);
-      border-radius: 5px;
-      position: relative;
-    }
-
-    .arm-segment1 {
-      width: 15px;
-      height: 80px;
-      background: var(--dark-gray);
-      border: 2px solid var(--black);
-      border-radius: 8px;
-      position: absolute;
-      bottom: 25px;
-      left: 20px;
-      transform-origin: bottom center;
-      animation: armRotate1 4s ease-in-out infinite;
-    }
-
-    .arm-segment2 {
-      width: 12px;
-      height: 60px;
-      background: var(--dark-gray);
-      border: 2px solid var(--black);
-      border-radius: 6px;
-      position: absolute;
-      top: -58px;
-      left: 1px;
-      transform-origin: bottom center;
-      animation: armRotate2 4s ease-in-out infinite;
-    }
-
-    .arm-gripper {
-      width: 20px;
-      height: 8px;
-      background: var(--black);
-      position: absolute;
-      top: -10px;
-      left: -4px;
-      border-radius: 3px;
-    }
-
-    .arm-gripper::before,
-    .arm-gripper::after {
-      content: '';
-      width: 8px;
-      height: 3px;
-      background: var(--black);
-      position: absolute;
-      top: -5px;
-    }
-
-    .arm-gripper::before { left: 2px; }
-    .arm-gripper::after { right: 2px; }
-
-    @keyframes armRotate1 {
-      0%, 100% { transform: rotate(-30deg); }
-      50% { transform: rotate(30deg); }
-    }
-
-    @keyframes armRotate2 {
-      0%, 100% { transform: rotate(20deg); }
-      50% { transform: rotate(-40deg); }
-    }
-
-    /* Drone Animation */
-    .drone {
-      position: absolute;
-      bottom: 15%;
-      left: 10%;
-      animation: droneHoverArea 8s ease-in-out infinite;
-    }
-
-    .drone-body {
-      width: 50px;
-      height: 30px;
-      background: var(--dark-gray);
-      border: 2px solid var(--black);
-      border-radius: 15px;
-      position: relative;
-    }
-
-    .drone-camera {
-      width: 15px;
-      height: 15px;
-      background: var(--black);
-      border-radius: 50%;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .propeller {
-      position: absolute;
-      width: 35px;
-      height: 4px;
-      background: var(--black);
-      animation: propellerSpin 0.3s linear infinite;
-    }
-
-    .propeller.tl {
-      top: -15px;
-      left: -15px;
-      transform-origin: center;
-    }
-
-    .propeller.tr {
-      top: -15px;
-      right: -15px;
-      transform-origin: center;
-    }
-
-    .propeller.bl {
-      bottom: -15px;
-      left: -15px;
-      transform-origin: center;
-    }
-
-    .propeller.br {
-      bottom: -15px;
-      right: -15px;
-      transform-origin: center;
-    }
-
-    @keyframes propellerSpin {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    @keyframes droneHoverArea {
-      0% {
-        transform: translate(0, 0);
-      }
-      15% {
-        transform: translate(-30px, -20px);
-      }
-      30% {
-        transform: translate(-50px, 10px);
-      }
-      45% {
-        transform: translate(-30px, 30px);
-      }
-      60% {
-        transform: translate(20px, 20px);
-      }
-      75% {
-        transform: translate(40px, -10px);
-      }
-      90% {
-        transform: translate(20px, -25px);
-      }
-      100% {
-        transform: translate(0, 0);
-      }
-    }
-
-    /* Circuit Lines Background */
-    .circuit-lines {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0.05;
-    }
-
-    .circuit-line {
-      position: absolute;
-      background: var(--black);
-      animation: pulse 3s ease-in-out infinite;
-    }
-
-    .line1 {
-      width: 2px;
-      height: 100px;
-      top: 20%;
-      left: 15%;
-      animation-delay: 0s;
-    }
-
-    .line2 {
-      width: 150px;
-      height: 2px;
-      top: 25%;
-      left: 10%;
-      animation-delay: 1s;
-    }
-
-    .line3 {
-      width: 2px;
-      height: 80px;
-      top: 50%;
-      right: 20%;
-      animation-delay: 2s;
-    }
-
-    .line4 {
-      width: 120px;
-      height: 2px;
-      bottom: 30%;
-      right: 15%;
-      animation-delay: 1.5s;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        opacity: 0.05;
-      }
-      50% {
-        opacity: 0.15;
-      }
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
-      align-items: center;
-      position: relative;
-      z-index: 1;
-    }
-
-    .hero-text h2 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: var(--black);
-      font-weight: 700;
-      line-height: 1.2;
-      opacity: 0;
-      animation: fadeInUp 0.8s forwards;
-    }
-
-    .dev-name {
-      border-bottom: 4px solid var(--black);
-    }
-
-
-
-    .hero-text p {
-      font-size: 1.05rem;
-      color: var(--dark-gray);
-      margin-bottom: 0.7rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s 0.3s forwards;
-    }
-
-    .location {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--medium-gray);
-      margin: 1.5rem 0;
-      font-size: 0.95rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s 0.4s forwards;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 1rem;
-      margin-top: 2rem;
-      opacity: 0;
-      animation: fadeInUp 0.8s 0.5s forwards;
-    }
-
-    .btn-outline {
-      padding: 0.75rem 1.5rem;
-      border: 2px solid var(--black);
-      color: var(--black);
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.1rem;
-      font-weight: 500;
-    }
-
-    .btn-outline:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-2px);
-    }
-
-    .btn-primary {
-      padding: 0.75rem 1.8rem;
-      background: var(--black);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    }
-
-    .hero-photo {
-      opacity: 0;
-      animation: fadeInUp 0.8s 0.6s forwards;
-      perspective: 1000px;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      max-width: 280px;
-      border-radius: 8px;
-      border: 3px solid var(--light-gray);
-      transition: transform 0.3s;
-    }
-
-    /* Image Tilt Effect */
-    .hero-photo img:hover {
-      transform: rotateY(5deg) rotateX(5deg) scale(1.02);
-    }
-
-    /* Sections */
+    /* ── SECTIONS ── */
     .section {
-      padding: 60px 0;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s, transform 0.6s;
+      padding:80px 20px; max-width:1000px; margin:0 auto;
+      opacity:0; transform:translateY(24px);
+      transition:opacity 0.6s, transform 0.6s;
     }
-
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
+/* PASTE THE NEW FIX HERE: */
+section, .section-full {
+  scroll-margin-top: 100px;
+}
+    .section.visible { opacity:1; transform:translateY(0); }
+    .section-full {
+      background:var(--bg2);
+      border-top:1px solid var(--border); border-bottom:1px solid var(--border);
     }
-
-    .section.alt {
-      background: var(--light-gray);
+    .section-eyebrow {
+      font-size:0.72rem; font-weight:600; letter-spacing:0.15em;
+      text-transform:uppercase; color:var(--accent); margin-bottom:0.6rem;
     }
-
-    .section h3 {
-      font-size: 2rem;
-      color: var(--black);
-      margin-bottom: 2rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-weight: 700;
+    .section-title {
+      font-family:'Syne',sans-serif; font-size:clamp(2rem,5vw,3.2rem);
+      font-weight:800; color:var(--text); letter-spacing:-1.5px;
+      line-height:1.05; margin-bottom:0.8rem;
     }
+    .section-sub { font-size:0.9rem; color:var(--text2); max-width:560px; margin-bottom:2.5rem; }
 
-    .section h3 i {
-      font-size: 1.8rem;
+    /* ── ABOUT ── */
+    .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; margin-top:2rem; }
+    .about-photo-wrap img { width:100%; max-width:340px; border-radius:16px; display:block; }
+    .about-text p { font-size:0.95rem; color:var(--text2); line-height:1.8; margin-bottom:1rem; }
+    .about-text p strong { color:var(--text); }
+    .about-stats { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:1.5rem; }
+    .about-stat-card {
+      background:var(--bg3); border:1px solid var(--border);
+      border-radius:12px; padding:1rem 1.2rem;
     }
-
-    .section > .container > p {
-      font-size: 1.05rem;
-      color: var(--dark-gray);
-      margin-bottom: 1rem;
-      max-width: 900px;
+    .about-stat-num {
+      font-family:'Syne',sans-serif; font-size:1.8rem; font-weight:800;
+      color:var(--accent); letter-spacing:-1px;
     }
-
-    /* Stats Counter */
-    .stats-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin: 2rem 0;
+    .about-stat-label { font-size:0.72rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.08em; margin-top:2px; }
+    .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+    .pillar {
+      background:var(--bg); border:1px solid var(--border);
+      border-radius:14px; padding:1.2rem; transition:all 0.25s;
     }
+    .pillar:hover { border-color:var(--accent); box-shadow:0 4px 20px rgba(37,99,235,0.1); transform:translateY(-3px); }
+    .pillar-icon { font-size:1.5rem; margin-bottom:0.6rem; }
+    .pillar-title { font-weight:700; font-size:0.88rem; color:var(--text); margin-bottom:0.3rem; }
+    .pillar-desc { font-size:0.78rem; color:var(--text2); line-height:1.5; }
 
-    .stat-box {
-      text-align: center;
-      padding: 2rem;
-      background: var(--white);
-      border-radius: 8px;
-      border: 2px solid var(--light-gray);
-      transition: all 0.3s;
+    /* ── EXPERIENCE ── */
+    .exp-list { display:flex; flex-direction:column; }
+    .exp-item {
+      display:flex; gap:1.5rem; padding:1.8rem 0;
+      border-bottom:1px solid var(--border); transition:all 0.2s;
     }
-
-    .stat-box:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    .exp-item:first-child { padding-top:0; }
+    .exp-item:last-child { border-bottom:none; }
+    .exp-logo {
+      width:56px; height:56px; border:1px solid var(--border); border-radius:12px;
+      object-fit:contain; flex-shrink:0; background:var(--bg); padding:6px;
     }
-
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 0.5rem;
+    .exp-body { flex:1; }
+    .exp-header {
+      display:flex; justify-content:space-between; align-items:flex-start;
+      gap:1rem; margin-bottom:0.3rem; flex-wrap:wrap;
     }
-
-    .stat-label {
-      font-size: 1rem;
-      color: var(--dark-gray);
-      font-weight: 500;
+    .exp-role { font-weight:700; font-size:1rem; color:var(--text); }
+    .exp-date { font-family:'Courier New',monospace; font-size:0.72rem; color:var(--accent); font-weight:600; white-space:nowrap; }
+    .exp-company { font-size:0.85rem; color:var(--text2); margin-bottom:0.8rem; }
+    .exp-bullets { list-style:none; }
+    .exp-bullets li {
+      font-size:0.85rem; color:var(--text2); padding:0.2rem 0;
+      display:flex; gap:0.6rem;
     }
+    .exp-bullets li::before { content:'→'; color:var(--accent); flex-shrink:0; font-size:0.8rem; margin-top:1px; }
 
-    /* Project Filters */
-    .filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin: 2rem 0;
-      justify-content: center;
-    }
-
+    /* ── PROJECTS ── */
+    .filter-row { display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; }
     .filter-btn {
-      padding: 0.6rem 1.5rem;
-      background: var(--white);
-      border: 2px solid var(--light-gray);
-      color: var(--dark-gray);
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 0.95rem;
-      font-weight: 500;
+      padding:0.35rem 1rem; border:1px solid var(--border2); background:transparent;
+      color:var(--text2); border-radius:100px; font-size:0.78rem; font-weight:500;
+      cursor:pointer; transition:all 0.2s; font-family:'Inter',sans-serif;
     }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--black);
-      transform: translateY(-2px);
-    }
-
-    /* Projects Grid */
-    .projects-grid,
-    .travel-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
+    .filter-btn:hover, .filter-btn.active { background:var(--text); color:var(--bg); border-color:var(--text); }
+    .projects-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem; }
     .project-card {
-      background: var(--white);
-      border-radius: 8px;
-      overflow: hidden;
-      border: 2px solid var(--light-gray);
-      transition: all 0.3s;
-      opacity: 0;
-      transform: translateY(20px);
-      perspective: 1000px;
+      background:var(--bg); border:1px solid var(--border); border-radius:16px;
+      overflow:hidden; transition:all 0.25s; opacity:0; transform:translateY(16px);
     }
-
-    .project-card.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .project-card.visible { opacity:1; transform:translateY(0); }
+    .project-card.hidden { display:none; }
+    .project-card:hover { border-color:var(--border2); box-shadow:0 8px 30px rgba(0,0,0,0.1); transform:translateY(-4px); }
+    .project-img-wrap { position:relative; height:180px; overflow:hidden; background:var(--bg3); }
+    .project-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
+    .project-card:hover .project-img-wrap img { transform:scale(1.06); }
+    .project-overlay {
+      position:absolute; inset:0; background:rgba(10,10,20,0.88);
+      display:flex; flex-direction:column; justify-content:flex-end;
+      padding:1rem; opacity:0; transform:translateY(8px); transition:all 0.3s;
     }
-
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      border-color: var(--medium-gray);
-    }
-
-    .project-card.hidden {
-      display: none;
-    }
-
-    .project-img-container {
-      position: relative;
-      width: 100%;
-      height: 220px;
-      overflow: hidden;
-      background: var(--light-gray);
-    }
-
-    .project-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-
-    /* Hover Zoom with Tilt */
-    .project-card:hover img {
-      transform: scale(1.15) rotate(2deg);
-    }
-
-    /* Image Overlay on Hover */
-    .project-img-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(26,26,26,0) 0%, rgba(26,26,26,0.7) 100%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .project-card:hover .project-img-container::after {
-      opacity: 1;
-    }
-
-    .project-card h4 {
-      color: var(--black);
-      padding: 1.2rem 1.5rem 0.8rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-
-    .project-card p {
-      padding: 0 1.5rem 1rem;
-      color: var(--dark-gray);
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    .project-tags {
-      padding: 0 1.5rem 1rem;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
+    .project-img-wrap:hover .project-overlay { opacity:1; transform:translateY(0); }
+    .project-overlay-title { font-size:0.82rem; font-weight:600; color:#fff; margin-bottom:0.4rem; line-height:1.3; }
+    .project-overlay-tags { display:flex; flex-wrap:wrap; gap:0.3rem; }
+    .overlay-tag { font-size:0.68rem; padding:2px 8px; background:var(--accent); color:#fff; border-radius:100px; }
+    .project-body { padding:1.1rem 1.2rem 1.2rem; }
+    .project-title { font-weight:700; font-size:0.9rem; color:var(--text); margin-bottom:0.4rem; line-height:1.3; }
+    .project-desc { font-size:0.78rem; color:var(--text2); line-height:1.55; margin-bottom:0.8rem; }
+    .project-tags { display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.9rem; }
     .project-tag {
-      padding: 0.3rem 0.8rem;
-      background: var(--light-gray);
-      color: var(--dark-gray);
-      border-radius: 15px;
-      font-size: 0.85rem;
-      transition: all 0.3s;
+      font-size:0.7rem; padding:3px 10px; border:1px solid var(--border2);
+      color:var(--text2); border-radius:100px; transition:all 0.2s;
     }
-
-    .project-tag:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: scale(1.05);
+    .project-tag:hover { background:var(--accent-bg); color:var(--accent); border-color:var(--accent); }
+    .project-link {
+      font-size:0.78rem; font-weight:600; color:var(--accent); text-decoration:none;
+      display:inline-flex; align-items:center; gap:0.3rem; transition:gap 0.2s;
     }
-
-    .btn {
-      display: inline-block;
-      padding: 0.7rem 1.8rem;
-      background: var(--black);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 6px;
-      margin: 0 1.5rem 1.5rem;
-      font-weight: 600;
-      transition: all 0.3s;
-      font-size: 0.9rem;
-      position: relative;
-      overflow: hidden;
+    .project-link:hover { gap:0.5rem; }
+    .show-more-wrap { text-align:center; margin-top:1.5rem; }
+    .show-more-btn {
+      padding:0.6rem 2rem; border:1px solid var(--border2); background:transparent;
+      color:var(--text2); border-radius:100px; font-size:0.82rem; font-weight:500;
+      cursor:pointer; font-family:'Inter',sans-serif; transition:all 0.2s;
     }
+    .show-more-btn:hover { background:var(--text); color:var(--bg); border-color:var(--text); }
 
-    /* Button Ripple Effect */
-    .btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
+    /* ── SKILLS ── */
+    .skills-categories { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+    .skill-group { background:var(--bg); border:1px solid var(--border); border-radius:16px; padding:1.4rem; }
+    .skill-group-title {
+      font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+      color:var(--text3); margin-bottom:1rem; padding-bottom:0.6rem; border-bottom:1px solid var(--border);
     }
-
-    .btn:hover::before {
-      width: 300px;
-      height: 300px;
+    .skill-icons { display:grid; grid-template-columns:repeat(auto-fill,minmax(70px,1fr)); gap:0.6rem; }
+    .skill-icon {
+      display:flex; flex-direction:column; align-items:center; gap:0.4rem;
+      padding:0.7rem 0.4rem; border:1px solid var(--border); border-radius:10px;
+      background:var(--bg2); transition:all 0.2s; cursor:default;
     }
+    .skill-icon:hover { border-color:var(--accent); background:var(--accent-bg); transform:translateY(-2px); }
+    .skill-icon i { font-size:1.3rem; color:var(--text2); }
+    .skill-icon:hover i { color:var(--accent); }
+    .skill-icon span { font-size:0.65rem; color:var(--text3); text-align:center; line-height:1.2; }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    /* Cards */
-    .edu-skills-grid {
-      display: grid;
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: var(--white);
-      padding: 2rem;
-      border-radius: 8px;
-      border: 2px solid var(--light-gray);
-      transition: all 0.3s;
-    }
-
-    .card:hover {
-      border-color: var(--medium-gray);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-    }
-
+    /* ── EDUCATION ── */
+    .edu-list { display:flex; flex-direction:column; gap:1rem; }
     .edu-card {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
+      display:flex; gap:1.2rem; align-items:flex-start;
+      background:var(--bg); border:1px solid var(--border); border-radius:16px;
+      padding:1.4rem; transition:all 0.2s;
     }
-
+    .edu-card:hover { border-color:var(--border2); box-shadow:var(--card-shadow); }
     .edu-logo {
-      width: 100px;
-      height: 100px;
-      object-fit: contain;
-      flex-shrink: 0;
+      width:52px; height:52px; object-fit:contain; border:1px solid var(--border);
+      border-radius:10px; flex-shrink:0; padding:4px; background:var(--bg2);
     }
+    .edu-body { flex:1; }
+    .edu-header { display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; flex-wrap:wrap; }
+    .edu-school { font-weight:700; font-size:0.95rem; color:var(--text); }
+    .edu-date { font-family:'Courier New',monospace; font-size:0.7rem; color:var(--accent); font-weight:600; }
+    .edu-degree { font-size:0.82rem; color:var(--text2); margin:0.25rem 0; }
+    .edu-location { font-size:0.78rem; color:var(--text3); margin-bottom:0.5rem; }
+    .edu-notes { font-size:0.78rem; color:var(--text2); line-height:1.6; }
 
-    .edu-text h4 {
-      color: var(--black);
-      font-size: 1.3rem;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
+    /* ── COMPETITIONS ── */
+    .comp-card {
+      background:var(--bg); border:1px solid var(--border); border-radius:16px;
+      padding:1.4rem; display:flex; gap:1.2rem; align-items:flex-start;
     }
-
-    .edu-text p {
-      color: var(--dark-gray);
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
+    .comp-logo { width:52px; height:52px; object-fit:cover; border-radius:10px; flex-shrink:0; }
+    .comp-body { flex:1; }
+    .comp-title { font-weight:700; font-size:0.95rem; color:var(--text); margin-bottom:0.2rem; }
+    .comp-sub { font-size:0.78rem; color:var(--text2); margin-bottom:0.6rem; }
+    .comp-text { font-size:0.82rem; color:var(--text2); line-height:1.6; }
+    .photo-toggle-btn {
+      margin-top:0.8rem; padding:0.35rem 1rem; border:1px solid var(--border2);
+      background:transparent; color:var(--text2); border-radius:100px;
+      font-size:0.78rem; font-weight:500; cursor:pointer;
+      font-family:'Inter',sans-serif; transition:all 0.2s;
     }
+    .photo-toggle-btn:hover { background:var(--text); color:var(--bg); border-color:var(--text); }
+    .image-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0.6rem; margin-top:0.8rem; }
+    .image-grid img { width:100%; height:130px; object-fit:cover; border-radius:8px; border:1px solid var(--border); transition:transform 0.2s; }
+    .image-grid img:hover { transform:scale(1.04); }
 
-    .edu-text em {
-      color: var(--medium-gray);
+    /* ── CONTACT ── */
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1rem; }
+    .contact-links { display:flex; flex-direction:column; gap:1rem; }
+    .contact-link {
+      display:flex; align-items:center; gap:1rem;
+      padding:1.1rem 1.4rem; border:1px solid var(--border); border-radius:14px;
+      text-decoration:none; color:var(--text); background:var(--bg); transition:all 0.2s;
     }
-
-    .edu-text strong {
-      color: var(--black);
-      font-weight: 600;
+    .contact-link:hover { border-color:var(--accent); box-shadow:0 4px 16px rgba(37,99,235,0.1); }
+    .contact-link-icon {
+      width:40px; height:40px; background:var(--accent-bg); border-radius:10px;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
     }
-
-    .image-row {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      margin-top: 1.5rem;
+    .contact-link-icon i { color:var(--accent); font-size:1rem; }
+    .contact-link-label { font-size:0.7rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:2px; }
+    .contact-link-value { font-size:0.88rem; font-weight:500; }
+    .contact-link-arrow { margin-left:auto; color:var(--text3); font-size:0.75rem; }
+    .contact-form { display:flex; flex-direction:column; gap:0.8rem; }
+    .contact-input {
+      padding:0.9rem 1rem; border:1px solid var(--border); border-radius:10px;
+      background:var(--bg); color:var(--text); font-family:'Inter',sans-serif;
+      font-size:0.88rem; outline:none; transition:border 0.2s;
     }
-
-    .image-row img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 6px;
-      transition: transform 0.3s;
-      border: 2px solid var(--light-gray);
+    .contact-input:focus { border-color:var(--accent); }
+    .contact-submit {
+      padding:0.85rem; background:var(--text); color:var(--bg); border:none;
+      border-radius:10px; font-size:0.88rem; font-weight:600; cursor:pointer;
+      font-family:'Inter',sans-serif; transition:opacity 0.2s;
     }
+    .contact-submit:hover { opacity:0.8; }
+    .contact-status { font-size:0.78rem; text-align:center; color:var(--text3); }
 
-    .image-row img:hover {
-      transform: scale(1.1);
-    }
-
-    /* Contact Form */
-    .contact-form {
-      max-width: 600px;
-      margin: 2rem auto;
-    }
-
-    .contact-form label {
-      display: block;
-      color: var(--dark-gray);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-      width: 100%;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      background: var(--white);
-      border: 2px solid var(--light-gray);
-      border-radius: 6px;
-      color: var(--black);
-      font-family: inherit;
-      transition: border-color 0.3s;
-      font-size: 1rem;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus {
-      outline: none;
-      border-color: var(--dark-gray);
-    }
-
-    .contact-form button {
-      width: 100%;
-      padding: 1rem;
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      border-radius: 6px;
-      font-weight: 600;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .contact-form button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    /* Footer */
+    /* ── FOOTER ── */
     .site-footer {
-      text-align: center;
-      padding: 2rem;
-      background: var(--light-gray);
-      border-top: 2px solid var(--medium-gray);
-      color: var(--dark-gray);
+      position:relative; overflow:hidden;
+      background:var(--bg2); border-top:1px solid var(--border);
+      padding:3rem 20px 2.5rem;
     }
-
-    .site-footer a {
-      color: var(--black);
-      text-decoration: none;
-      font-weight: 500;
+    #particles { position:absolute; inset:0; pointer-events:none; }
+    .footer-inner {
+      max-width:1000px; margin:0 auto;
+      display:flex; justify-content:space-between; align-items:flex-end;
+      gap:2rem; flex-wrap:wrap; position:relative; z-index:1;
     }
+    .footer-name { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:800; color:var(--text); margin-bottom:0.3rem; }
+    .footer-tagline { font-size:0.8rem; color:var(--text3); margin-bottom:0.6rem; }
+    .footer-copy { font-size:0.72rem; color:var(--text3); }
+    .footer-updated { font-size:0.68rem; color:var(--text3); margin-top:4px; }
+    .footer-right { display:flex; flex-direction:column; align-items:flex-end; gap:0.8rem; }
+    .footer-socials { display:flex; gap:0.5rem; }
+    .footer-socials a {
+      width:36px; height:36px; border:1px solid var(--border2); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      color:var(--text2); font-size:0.85rem; text-decoration:none; transition:all 0.2s;
+    }
+    .footer-socials a:hover { background:var(--text); color:var(--bg); border-color:var(--text); }
+    .footer-resume {
+      padding:0.5rem 1.4rem; background:var(--text); color:var(--bg);
+      border-radius:100px; font-size:0.78rem; font-weight:600;
+      text-decoration:none; transition:opacity 0.2s;
+    }
+    .footer-resume:hover { opacity:0.75; }
 
-    /* Scroll to top */
+    /* ── SCROLL TO TOP ── */
     #scrollTopBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: var(--black);
-      color: var(--white);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.5rem;
-      transition: all 0.3s;
-      z-index: 999;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      position:fixed; bottom:24px; right:24px; width:40px; height:40px;
+      background:var(--text); color:var(--bg); border:none; border-radius:50%;
+      cursor:pointer; font-size:1rem; z-index:999;
+      box-shadow:0 4px 16px rgba(0,0,0,0.15);
+      display:none; align-items:center; justify-content:center; transition:opacity 0.2s;
     }
+    #scrollTopBtn:hover { opacity:0.75; }
 
-    #scrollTopBtn:hover {
-      transform: translateY(-3px) rotate(360deg);
-    }
-
-    /* Animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Responsive */
-    @media (max-width: 968px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero-photo {
-        order: -1;
-      }
-
-      .hero-photo img {
-        max-width: 300px;
-        margin: 0 auto;
-      }
-
-      .hero-text h2 {
-        font-size: 2.2rem;
-      }
-
-      .cta-row {
-        justify-content: center;
-      }
-
-      .projects-grid,
-      .travel-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .edu-card {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .image-row {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .stats-container {
-        grid-template-columns: 1fr;
-      }
-
-      /* Hide some background animations on mobile */
-      .mobile-robot,
-      .robotic-arm,
-      .drone {
-        transform: scale(0.7);
-      }
-
-      .circuit-lines {
-        opacity: 0.03;
-      }
-    }
-
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .nav {
-        position: fixed;
-        top: 70px;
-        left: -100%;
-        width: 100%;
-        height: calc(100vh - 70px);
-        background: var(--white);
-        flex-direction: column;
-        padding: 2rem;
-        transition: left 0.3s;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      .site-header { top:12px; width:calc(100% - 24px); }
+      .nav-links { display:none; }
+      .nav-links.open {
+        display:flex; flex-direction:column;
+        position:fixed; top:72px; left:12px; right:12px;
+        background:var(--pill-bg); backdrop-filter:blur(16px);
+        border:1px solid var(--border); border-radius:20px;
+        padding:1rem; box-shadow:var(--pill-shadow); z-index:999;
       }
-
-      .nav.active {
-        left: 0;
-      }
-
-      .nav-toggle {
-        display: block;
-      }
-
-      .hero-text h2 {
-        font-size: 1.8rem;
-      }
-
-      .hero-text p {
-        font-size: 1rem;
-      }
-
-      .section h3 {
-        font-size: 1.6rem;
-      }
+      .nav-links.open a { padding:0.6rem 1rem; border-radius:10px; }
+      .nav-toggle { display:block; }
+      .hero-name { font-size:clamp(52px, 15vw, 90px); }
+      .hero-bottom { flex-direction:column; align-items:flex-start; }
+      .hero-actions { align-items:flex-start; }
+      .about-grid { grid-template-columns:1fr; }
+      .about-photo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+      .pillars { grid-template-columns:1fr; }
+      .projects-grid { grid-template-columns:1fr; }
+      .skills-categories { grid-template-columns:1fr; }
+      .image-grid { grid-template-columns:repeat(2,1fr); }
+      .contact-grid { grid-template-columns:1fr; }
+      .footer-inner { flex-direction:column; align-items:flex-start; }
+      .footer-right { align-items:flex-start; }
     }
   </style>
 </head>
 <body>
-  <!-- Scroll Progress -->
-  <div id="scrollProgress"></div>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <h1>Dev Goti</h1>
-        <p class="tagline"></p>
-      </div>
-      <button id="navToggle" class="nav-toggle">☰</button>
-      <nav id="nav" class="nav">
-        <a href="#" class="main-tab active" data-section="portfolio">Portfolio</a>
-        <a href="#" class="main-tab" data-section="exploring">Exploring</a>
-        <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
-          <i class="fas fa-moon"></i>
-        </button>
-        <a class="resume-btn" href="assets/resume.pdf" target="_blank">Resume</a>
-      </nav>
+<div id="scrollProgress"></div>
+
+<!-- ═══════════ NAV ═══════════ -->
+<header class="site-header">
+  <div class="nav-pill">
+    <a href="#home" class="nav-brand">Dev Goti</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about"       class="nav-anchor">About</a></li>
+      <li><a href="#experience"  class="nav-anchor">Experience</a></li>
+      <li><a href="#projects"    class="nav-anchor">Projects</a></li>
+      <li><a href="#skills"      class="nav-anchor">Skills</a></li>
+      <li><a href="#contact"     class="nav-anchor">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" title="Toggle theme"><i class="fas fa-moon"></i></button>
+      <button class="nav-toggle" id="navToggle">☰</button>
+      <a href="assets/resume.pdf" target="_blank" class="nav-btn">Resume</a>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section id="portfolioSection">
-      <section id="hero" class="hero">
-        <!-- Animated Robot Background -->
-        <div class="robot-animation">
-          <!-- Mobile Robot -->
-          <div class="mobile-robot">
-            <div class="robot-body">
-              <div class="robot-head">
-                <div class="robot-antenna"></div>
-                <div class="robot-eye left"></div>
-                <div class="robot-eye right"></div>
-              </div>
-              <div class="robot-wheel left"></div>
-              <div class="robot-wheel right"></div>
-            </div>
-          </div>
-          
-          <!-- Robotic Arm -->
-          <div class="robotic-arm">
-            <div class="arm-base">
-              <div class="arm-segment1">
-                <div class="arm-segment2">
-                  <div class="arm-gripper"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Drone -->
-          <div class="drone">
-            <div class="drone-body">
-              <div class="drone-camera"></div>
-              <div class="propeller tl"></div>
-              <div class="propeller tr"></div>
-              <div class="propeller bl"></div>
-              <div class="propeller br"></div>
-            </div>
-          </div>
-          
-          <!-- Circuit Lines -->
-          <div class="circuit-lines">
-            <div class="circuit-line line1"></div>
-            <div class="circuit-line line2"></div>
-            <div class="circuit-line line3"></div>
-            <div class="circuit-line line4"></div>
-          </div>
-        </div>
+<div class="page-content">
 
-        <div class="container hero-grid">
-          <div class="hero-text">
-            <h2>Hello, I'm <i><b><span class="dev-name" style="font-size: 56px;">Dev</span></b></i></h2>
-            
-            <p>Traveling, discovering, exploring—that's how I live.</p>
-            <p>Designing and building robots—that's how I create.</p>
-            <p>I combine adventure and invention in everything I do.</p>
-            <div class="location">
-              <i class="fas fa-map-marker-alt"></i> College Station, Texas, USA
-            </div>
-            <div class="cta-row">
-              <a class="btn-primary" href="assets/resume.pdf" target="_blank">
-                <i class="fas fa-download"></i> Download Resume
-              </a>
-              <a class="btn-outline" href="https://github.com/devgoti16" target="_blank">
-                <i class="fab fa-github"></i>
-              </a>
-              <a class="btn-outline" href="https://www.linkedin.com/in/dev-goti/" target="_blank">
-                <i class="fab fa-linkedin"></i>
-              </a>
-              <a class="btn-outline" href="mailto:devgoti1683@gmail.com">
-                <i class="fas fa-envelope"></i>
-              </a>
-            </div>
-          </div>
-          <div class="hero-photo">
-            <img src="assets/profile.JPG" alt="Dev Goti - Robotics Engineer" id="heroImage" />
-          </div>
-        </div>
-      </section>
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="hero" id="home">
+    <div class="hero-name">DEV<br><span class="outline">GOTI</span></div>
+    <div class="hero-bottom">
+      <div class="hero-desc">
+        The real world doesn't come with a manual. I build robots that figure it out anyway. Systems that perceive, plan, and navigate environments that weren't designed to be easy.
 
-      <section id="about" class="section alt">
-        <div class="container">
-          <h3><i class="fas fa-user"></i> About Me</h3>
-          <p style="font-style: italic; font-size: 1.1rem; margin-bottom: 1.5rem;">Engineer. Explorer. Dreamer of autonomous worlds.</p>
-          <p>Fascinated by how machines can learn, adapt, and move with purpose, I enjoy working at the crossroads of robotics and AI, where imagination meets engineering, and where robots are shaped to navigate complex, dynamic environments.</p>
-          <p>Currently pursuing my Master's at Texas A&M University, I focus on challenges in <strong>autonomous navigation, planning, perception, and control</strong>, always aiming to bridge the gap between theory and real-world applications of intelligent machines.</p>
-          
-                  </div>
-      </section>
-
-      <section id="projects" class="section">
-        <div class="container">
-          <h3><i class="fas fa-project-diagram"></i> Projects</h3>
-          
-          <div class="filter-buttons">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="deep-learning">Deep Learning</button>
-            <button class="filter-btn" data-filter="navigation">Navigation</button>
-            <button class="filter-btn" data-filter="computer-vision">Computer Vision</button>
-            <button class="filter-btn" data-filter="planning">Path Planning</button>
-          </div>
-
-          <div class="projects-grid">
-            <article class="project-card" data-category="deep-learning navigation">
-              <div class="project-img-container">
-                <img src="assets/drl2.jpg" alt="Autonomous Navigation using Deep RL" />
-              </div>
-              <h4>Autonomous Navigation using RL</h4>
-              <p>Developed an autonomous mobile robot navigation system using TD3-based Deep Reinforcement Learning, integrating LiDAR sensing and ROS 2 for real-time decision-making.</p>
-              <div class="project-tags">
-                <span class="project-tag">Deep RL</span>
-                <span class="project-tag">ROS 2</span>
-                <span class="project-tag">LiDAR</span>
-              </div>
-              <a href="https://github.com/IEEE-NITK/Path_Planning_of_a_robot_using_DRL" target="_blank" class="btn">View Project</a>
-            </article>
-
-<article class="project-card" data-category="deep-learning planning">
-              <div class="project-img-container">
-                <img src="assets/lidarfusion.jpg" alt="_" />
-              </div>
-              <h4>LiDAR and Camera Fusion for 3D Obstacle Detection</h4>
-              <p>Built an unsupervised LiDAR-based obstacle detection pipeline on the KITTI dataset using voxel downsampling, RANSAC plane segmentation, and DBSCAN clustering. Implemented full calibration-aware 3D bounding box projection and evaluated performance using IoU-based metrics, forming a baseline for future sensor fusion systems.</p>
-              <div class="project-tags">
-                <span class="project-tag">ROS</span>
-              </div>
-              <a href="_" target="_blank" class="btn">View Project</a>
-            </article>
-
-
-
-
-
-<article class="project-card" data-category="deep-learning planning">
-              <div class="project-img-container">
-                <img src="assets/persontracking.png" alt="_" />
-              </div>
-              <h4>LiDAR-Based Person Detection and Tracking</h4>
-              <p>ROS2-based LiDAR person-tracking system that detects people from 2D laser scans and visualizes their movement over time. It clusters LiDAR points into human-sized shapes, tracks them across frames with consistent IDs, and displays colored trails and markers in RViz while supporting automated bag playback and recording for experiments.</p>
-              <div class="project-tags">
-                <span class="project-tag">ROS</span>
-              </div>
-              <a href="_" target="_blank" class="btn">View Project</a>
-            </article>
-
-
-
-<article class="project-card" data-category="deep-learning planning">
-              <div class="project-img-container">
-                <img src="assets/arm.png" alt="_" />
-              </div>
-              <h4>Particle Filter Localization for Mobile Robots</h4>
-              <p>A ROS2-based localization system that uses a particle filter to estimate a mobile robot’s pose on a 2D occupancy grid map using velocity commands, floor color sensing, and compass readings.</p>
-              <div class="project-tags">
-                <span class="project-tag">ROS</span>
-              </div>
-              <a href="_" target="_blank" class="btn">View Project</a>
-            </article>
-
-
-
-
-
-
-            <article class="project-card" data-category="deep-learning planning">
-              <div class="project-img-container">
-                <img src="assets/arm.png" alt="7DOF Robotic Arm Trajectory Planning" />
-              </div>
-              <h4>7DOF Robotic Arm Planning</h4>
-              <p>Implemented PPO-based deep reinforcement learning for dynamic trajectory planning of a 7-DOF Kinova JACO2 arm in ROS–Gazebo environment.</p>
-              <div class="project-tags">
-                <span class="project-tag">PPO</span>
-                <span class="project-tag">ROS</span>
-                <span class="project-tag">Gazebo</span>
-              </div>
-              <a href="https://github.com/devgoti16/Dynamic-Trajectory-Planning-of-a-7DOF-Robotic-Arm-Using-Deep-Reinforcement-Learning" target="_blank" class="btn">View Project</a>
-            </article>
-
-            <article class="project-card" data-category="navigation planning">
-              <div class="project-img-container">
-                <img src="assets/prmnav.png" alt="PRM-Nav Autonomous Navigation" />
-              </div>
-              <h4>PRM-Nav</h4>
-              <p>Built a ROS2-based autonomous navigation pipeline using Probabilistic Roadmaps for global planning in obstacle-dense environments.</p>
-              <div class="project-tags">
-                <span class="project-tag">ROS 2</span>
-                <span class="project-tag">PRM</span>
-                <span class="project-tag">Navigation</span>
-              </div>
-              <a href="https://github.com/devgoti16/PRM-Nav" target="_blank" class="btn">View Project</a>
-            </article>
-
-            <article class="project-card" data-category="computer-vision deep-learning">
-              <div class="project-img-container">
-                <img src="assets/llie.png" alt="Low Light Image Enhancement" />
-              </div>
-              <h4>Low Light Image Enhancement</h4>
-              <p>Developed deep learning–based enhancement using MIRNet, deployed on Arduino Nano 33 BLE Sense for edge AI applications.</p>
-              <div class="project-tags">
-                <span class="project-tag">MIRNet</span>
-                <span class="project-tag">Edge AI</span>
-                <span class="project-tag">Arduino</span>
-              </div>
-              <a href="https://github.com/IEEE-NITK/Low-Light-Image-Enhancement-Using-MIRNet/tree/main" target="_blank" class="btn">View Project</a>
-            </article>
-
-            <article class="project-card" data-category="planning">
-              <div class="project-img-container">
-                <img src="assets/segment.png" alt="Heuristic Path Planning Controller" />
-              </div>
-              <h4>Segment Visitation Controller</h4>
-              <p>Designed hybrid path planning framework combining heuristic strategies with local 2-opt optimization for efficient navigation.</p>
-              <div class="project-tags">
-                <span class="project-tag">Heuristics</span>
-                <span class="project-tag">Optimization</span>
-                <span class="project-tag">Planning</span>
-              </div>
-              <a href="https://github.com/devgoti16/Heuristic-and-Local-Optimization-Based-Controller-for-Efficient-Segment-Visitation" target="_blank" class="btn">View Project</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="competitions" class="section alt">
-        <div class="container">
-          <h3><i class="fas fa-trophy"></i> Competitions</h3>
-          <div class="card edu-card">
-            <img src="assets/crn.jpg" alt="CSD Robocon NITK Logo" class="edu-logo" />
-            <div class="edu-text">
-              <h4>ABU Robocon</h4>
-              <p><em>Team: CSD Robocon NITK, Mangalore, India</em></p>
-              <p><a href="https://robocon.nitk.ac.in/" target="_blank" class="btn-outline" style="display: inline-block; margin: 0.5rem 0;">Visit Team Website</a></p>
-              <p>Started as an electronics and programming systems member, later mentored juniors and coordinated across subsystems. Eventually stepped up as <strong>Vice Captain</strong>, guiding a <strong>40+ member team</strong> to the ABU Robocon stage.</p>
-              <div class="image-row">
-                <img src="assets/crn1.jpg" alt="Robot Build Process" />
-                <img src="assets/crn2.jpg" alt="Team CSD Robocon NITK" />
-                <img src="assets/crn3.jpg" alt="Robot in Action" />
-                <img src="assets/crn4.jpg" alt="Robot at Competition" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="education" class="section">
-        <div class="container">
-          <h3><i class="fas fa-graduation-cap"></i> Education</h3>
-          <div class="edu-skills-grid">
-            <div class="card edu-card">
-              <img src="assets/TAMU_logo.png" alt="Texas A&M University Logo" class="edu-logo" />
-              <div class="edu-text">
-                <h4>Texas A&M University</h4>
-                <p><em>College Station, Texas, USA</em></p>
-                <p><strong>Master of Science in Electrical Engineering | GPA : 4.0/4.0</strong><br>Aug 2025 – May 2027</p>
-		<p> Courses : Robotics & Spatial Intelligence, Visual Navigation and Foundational Models of Autonomy, Computer Vision and Robot Perception, Reinforcement Learning, Linear Multivariate Systems, Probability and Random Processes </p>
-              </div>
-            </div>
-            <div class="card edu-card">
-              <img src="assets/NITK_Logo.png" alt="NITK Surathkal Logo" class="edu-logo" />
-              <div class="edu-text">
-                <h4>National Institute of Technology Karnataka, Surathkal</h4>
-                <p><em>Mangalore, Karnataka, India</em></p>
-                <p><strong>Bachelor of Technology in Electrical and Electronics Engineering | GPA : 8.70/10</strong><br><strong>Minor in Management</strong><br>Dec 2021 – May 2025</p>
-		<p>- Undergraduate Student Researcher at REHAB Group, Dept of EEE <br>- Vice Captain of Robotics Team, CSD Robocon NITK </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="section alt">
-        <div class="container">
-          <h3><i class="fas fa-briefcase"></i> Experience</h3>
-          <div class="card edu-card">
-            <img src="assets/IIST_logo.png" alt="IIST Logo" class="edu-logo" />
-            <div class="edu-text">
-              <h4>Indian Institute of Space Science and Technology</h4>
-              <p><em>Thiruvananthapuram, India</em></p>
-              <p><strong>Summer Research Intern</strong><br>May 2024 – Jul 2024</p>
-              <p>Received Indian Academy of Science Summer Research Fellowship</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section">
-        <div class="container">
-          <h3><i class="fas fa-envelope"></i> Contact</h3>
-          <p style="text-align: center; font-size: 1.05rem; margin-bottom: 2rem;">Let's connect! I'm always excited to collaborate on robotics, AI, and autonomous vehicles.</p>
-          <form action="https://formspree.io/f/xgvnvrla" method="POST" class="contact-form">
-            <label for="name">Name</label>
-            <input id="name" type="text" name="name" placeholder="Your name" required>
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Your message" required></textarea>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </section>
-    </section>
-
-    <section id="exploringSection" style="display: none;">
-      <div class="container" style="padding: 80px 20px;">
-        <h3><i class="fas fa-hiking"></i> Exploring</h3>
-        <p style="font-size: 1.05rem; margin-bottom: 2rem;">I love traveling and sharing my adventures. Here are some travel stories, photos, and guides.</p>
-        <div class="travel-grid">
-          <article class="project-card visible">
-            <div class="image-row">
-              <img src="assets/kalsubai1.jpg" alt="Kalsubai Trek View 1" />
-              <img src="assets/kalsubai2.jpg" alt="Kalsubai Trek View 2" />
-              <img src="assets/kalsubai3.jpg" alt="Kalsubai Trek View 3" />
-            </div>
-            <h4>Kalsubai Trek</h4>
-            <p>Above the clouds at Maharashtra's highest peak — every step was a mix of sweat, thrill, and stunning views worth the climb.</p>
-          </article>
-          <article class="project-card visible">
-            <div class="image-row">
-              <img src="assets/kudremukh3.jpg" alt="Kudremukh Trek View 1" />
-              <img src="assets/kudremukh2.jpg" alt="Kudremukh Trek View 2" />
-              <img src="assets/kudremukh1.jpg" alt="Kudremukh Trek View 3" />
-            </div>
-            <h4>Kudremukh Trek</h4>
-            <p>Trekking through Kudremukh — where every step unveils misty hills, lush forests, and the serene beauty of Karnataka's highlands.</p>
-          </article>
+      </div>
+      <div class="hero-actions">
+        <a href="assets/resume.pdf" target="_blank" class="hero-cta">
+          <i class="fas fa-download" style="margin-right:6px;"></i>Download Resume
+        </a>
+        <div class="hero-socials">
+          <a href="https://github.com/devgoti16" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/dev-goti/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="mailto:devgoti1683@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Dev Goti — Life is Adventure</p>
     </div>
-  </footer>
+  </section>
 
-  <button id="scrollTopBtn" title="Go to top" style="display:none;">⬆</button>
+  <!-- ═══════════ ABOUT ═══════════ -->
+  <div class="section-full" id="about">
+    <div class="section">
+      <div class="section-eyebrow">Get to know me</div>
+      <div class="section-title">About Me</div>
+      <div class="about-grid">
+        <div class="about-photo-wrap">
+          <img src="assets/profile.jpeg" alt="Dev Goti" />
+        </div>
+        <div class="about-text">
+          <p>I'm a Robotics Engineer working on autonomous systems. How robots perceive their environment, estimate where they are, plan where to go, and execute reliably when things don't go as planned.</p>
+          <p>At Texas A&M, my work spans SLAM pipelines, RL based planners for drones and robotic arms, LiDAR camera fusion, and safe autonomous navigation. The thread connecting all of it is the same question: how do you build a system that holds up outside the lab?</p>
+          <p>Before grad school, I spent four years at NIT Karnataka building robots for ABU Robocon. I started as a programmer on the electronics team and finished as Vice Captain, leading a 40 person team through a full competition cycle. That experience taught me that the gap between a robot that works and one that doesn't is almost never the algorithm.</p>
+          <p>When I'm away from the lab, I'm usually on a trail. I trek, I photograph, and I document places. The same instinct to observe carefully and bring something back, just applied to mountains instead of sensor data.</p>
+       
+        </div>
+      </div>
+     </div>
+  </div>
 
-  <script>
-    // Scroll Progress Indicator
-    window.addEventListener('scroll', () => {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('scrollProgress').style.width = scrolled + '%';
+  <!-- ═══════════ EXPERIENCE ═══════════ -->
+  <div id="experience">
+    <div class="section">
+      <div class="section-eyebrow">Career Journey</div>
+      <div class="section-title">Work Experience</div>
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <img src="assets/IIST_logo.png" alt="IIST" class="exp-logo" />
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-role">Summer Research Intern</div>
+              <div class="exp-date">May 2024 – Jul 2024</div>
+            </div>
+            <div class="exp-company">Indian Institute of Space Science and Technology &nbsp;·&nbsp; Thiruvananthapuram, India</div>
+            <ul class="exp-bullets">
+              <li>Received Indian Academy of Science Summer Research Fellowship.</li>
+              <li>Developed a PPO-based DRL trajectory planner for a 7-DOF robotic arm enabling collision-aware, smooth goal-directed motion in continuous state-action spaces.</li>
+              <li>Evaluated learned policies using reward convergence, target accuracy, and trajectory smoothness metrics.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ PROJECTS ═══════════ -->
+  <div class="section-full" id="projects">
+    <div class="section">
+      <div class="section-eyebrow">Portfolio</div>
+      <div class="section-title">Featured Projects</div>
+      <div class="section-sub">A showcase of robotics and AI systems demonstrating expertise in perception, planning, and autonomous navigation.</div>
+      <div class="filter-row">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="slam">SLAM</button>
+        <button class="filter-btn" data-filter="navigation">Navigation</button>
+        <button class="filter-btn" data-filter="computer-vision">Computer Vision</button>
+        <button class="filter-btn" data-filter="planning">Path Planning</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+
+        <div class="project-card" data-category="computer-vision slam">
+          <div class="project-img-wrap">
+            <img src="assets/lidarfusion.jpg" alt="LiDAR Fusion" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">LiDAR–Camera Fusion for 3D Obstacle Detection</div>
+            <div class="project-desc">Fusion pipeline using RANSAC, voxel downsampling, and DBSCAN on KITTI. Extrinsic calibration with IoU-based 3D bounding box evaluation.</div>
+            <div class="project-tags">
+              <span class="project-tag">LiDAR</span><span class="project-tag">RANSAC</span><span class="project-tag">DBSCAN</span>
+            </div>
+            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="navigation planning">
+          <div class="project-img-wrap">
+            <img src="assets/drl2.jpg" alt="Autonomous Navigation" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">Autonomous Navigation using Deep RL</div>
+            <div class="project-desc">TD3-based DRL system integrating LiDAR and ROS 2 for real-time obstacle avoidance and goal-directed mobile robot navigation.</div>
+            <div class="project-tags">
+              <span class="project-tag">TD3</span><span class="project-tag">ROS 2</span><span class="project-tag">LiDAR</span>
+            </div>
+            <a href="https://ieee.nitk.ac.in/virtual_expo/report/3" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="slam navigation">
+          <div class="project-img-wrap">
+            <img src="assets/gnc_tls.gif" alt="Visual SLAM" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">Robust Outlier Rejection in Visual SLAM</div>
+            <div class="project-desc">GNC-TLS loop closure outlier rejection achieving 94% trajectory error reduction and 290× faster runtime vs RANSAC on KITTI dataset.</div>
+            <div class="project-tags">
+              <span class="project-tag">SLAM</span><span class="project-tag">GNC-TLS</span><span class="project-tag">KITTI</span><span class="project-tag">RANSAC</span>
+            </div>
+            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="planning navigation">
+          <div class="project-img-wrap">
+            <img src="assets/quadrotor.png" alt="CBF Quadrotor" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">CBF for Safe RL Quadrotor Control</div>
+            <div class="project-desc">Motor-level CBF safety filters reducing safety violations by 2.4× across PPO and adaptive policies in high-fidelity drone simulations.</div>
+            <div class="project-tags">
+              <span class="project-tag">CBF</span><span class="project-tag">Safe RL</span><span class="project-tag">PPO</span><span class="project-tag">Quadrotor</span>
+            </div>
+            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="computer-vision">
+          <div class="project-img-wrap">
+            <img src="assets/imageedit.jpg" alt="Image Editing" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">Spatially-Aware Image Editing</div>
+            <div class="project-desc">VLM-orchestrated pipeline using DINO+SAM grounding. 99.3% intent accuracy and SSIM 0.976 via hybrid LaMa + SDXL blending.</div>
+            <div class="project-tags">
+              <span class="project-tag">VLM</span><span class="project-tag">SAM</span><span class="project-tag">Inpainting</span><span class="project-tag">SDXL</span>
+            </div>
+            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="project-card" data-category="navigation planning">
+          <div class="project-img-wrap">
+            <img src="assets/prmnav.png" alt="PRM Nav" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">PRM-Nav</div>
+            <div class="project-desc">PRM path planner with k-NN construction and Dijkstra search. Includes path smoothing, unreachable goal handling, and RViz visualization.</div>
+            <div class="project-tags">
+              <span class="project-tag">ROS 2</span><span class="project-tag">PRM</span><span class="project-tag">Dijkstra</span><span class="project-tag">RViz</span>
+            </div>
+            <a href="https://github.com/devgoti16/PRM-Nav" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="planning">
+          <div class="project-img-wrap">
+            <img src="assets/arm.png" alt="7DOF Arm" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">7DOF Robotic Arm Trajectory Planning</div>
+            <div class="project-desc">PPO-based RL for collision-aware planning of Kinova JACO2 arm. Evaluated via reward convergence and trajectory smoothness in Gazebo.</div>
+            <div class="project-tags">
+              <span class="project-tag">PPO</span><span class="project-tag">ROS</span><span class="project-tag">Gazebo</span>
+            </div>
+            <a href="https://github.com/devgoti16/Dynamic-Trajectory-Planning-of-a-7DOF-Robotic-Arm-Using-Deep-Reinforcement-Learning" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="navigation computer-vision slam">
+          <div class="project-img-wrap">
+            <img src="assets/persontracking.png" alt="Person Tracking" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">LiDAR-Based Person Detection and Tracking</div>
+            <div class="project-desc">ROS2 system detecting people from 2D laser scans, clustering LiDAR points into human-sized shapes and tracking them with consistent IDs and RViz trails.</div>
+            <div class="project-tags">
+              <span class="project-tag">ROS 2</span><span class="project-tag">LiDAR</span><span class="project-tag">Tracking</span><span class="project-tag">RViz</span>
+            </div>
+            <a href="#" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="computer-vision">
+          <div class="project-img-wrap">
+            <img src="assets/llie.png" alt="Low Light" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">Low Light Image Enhancement</div>
+            <div class="project-desc">MIRNet-based enhancement deployed on Arduino Nano 33 BLE Sense for edge AI applications in resource-constrained environments.</div>
+            <div class="project-tags">
+              <span class="project-tag">MIRNet</span><span class="project-tag">Edge AI</span><span class="project-tag">Arduino</span>
+            </div>
+            <a href="https://github.com/IEEE-NITK/Low-Light-Image-Enhancement-Using-MIRNet/tree/main" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+        <div class="project-card" data-category="planning">
+          <div class="project-img-wrap">
+            <img src="assets/segment.png" alt="Segment Visitation" />
+          </div>
+          <div class="project-body">
+            <div class="project-title">Segment Visitation Controller</div>
+            <div class="project-desc">Hybrid path planning combining heuristic strategies with local 2-opt optimization for efficient multi-segment navigation.</div>
+            <div class="project-tags">
+              <span class="project-tag">Heuristics</span><span class="project-tag">2-opt</span><span class="project-tag">Planning</span>
+            </div>
+            <a href="https://github.com/devgoti16/Heuristic-and-Local-Optimization-Based-Controller-for-Efficient-Segment-Visitation" target="_blank" class="project-link">View Project <i class="fas fa-arrow-right" style="font-size:0.65rem;"></i></a>
+          </div>
+        </div>
+
+      </div>
+      <div class="show-more-wrap">
+        <button class="show-more-btn" id="showMoreBtn">Show More Projects</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ SKILLS ═══════════ -->
+  <div id="skills">
+    <div class="section">
+      <div class="section-eyebrow">Technical Arsenal</div>
+      <div class="section-title">Skills &amp; Technologies</div>
+      <div class="skills-categories">
+
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-icons">
+            <div class="skill-icon"><i class="fab fa-python"></i><span>Python</span></div>
+            <div class="skill-icon"><i class="fas fa-code"></i><span>C++</span></div>
+            <div class="skill-icon"><i class="fas fa-terminal"></i><span>C</span></div>
+            <div class="skill-icon"><i class="fas fa-database"></i><span>CUDA</span></div>
+            <div class="skill-icon"><i class="fas fa-subscript"></i><span>MATLAB</span></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Tools &amp; Frameworks</div>
+          <div class="skill-icons">
+            <div class="skill-icon"><i class="fas fa-robot"></i><span>ROS/ROS2</span></div>
+            <div class="skill-icon"><i class="fas fa-cube"></i><span>Gazebo</span></div>
+            <div class="skill-icon"><i class="fas fa-satellite"></i><span>Isaac Sim</span></div>
+            <div class="skill-icon"><i class="fas fa-eye"></i><span>RViz</span></div>
+            <div class="skill-icon"><i class="fab fa-docker"></i><span>Docker</span></div>
+            <div class="skill-icon"><i class="fab fa-linux"></i><span>Linux</span></div>
+            <div class="skill-icon"><i class="fab fa-git-alt"></i><span>Git</span></div>
+            <div class="skill-icon"><i class="fas fa-network-wired"></i><span>Simulink</span></div>
+            <div class="skill-icon"><i class="fas fa-laptop-code"></i><span>VS Code</span></div>
+            <div class="skill-icon"><i class="fas fa-flask"></i><span>Jupyter</span></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">ML &amp; AI</div>
+          <div class="skill-icons">
+            <div class="skill-icon"><i class="fas fa-fire"></i><span>PyTorch</span></div>
+            <div class="skill-icon"><i class="fas fa-brain"></i><span>TensorFlow</span></div>
+            <div class="skill-icon"><i class="fas fa-layer-group"></i><span>Keras</span></div>
+            <div class="skill-icon"><i class="fas fa-camera"></i><span>OpenCV</span></div>
+            <div class="skill-icon"><i class="fas fa-project-diagram"></i><span>Scikit-learn</span></div>
+            <div class="skill-icon"><i class="fas fa-calculator"></i><span>NumPy</span></div>
+            <div class="skill-icon"><i class="fas fa-table"></i><span>Pandas</span></div>
+            <div class="skill-icon"><i class="fas fa-chart-bar"></i><span>Matplotlib</span></div>
+            <div class="skill-icon"><i class="fas fa-atom"></i><span>Gymnasium</span></div>
+            <div class="skill-icon"><i class="fas fa-share-alt"></i><span>Stable Baselines</span></div>
+            <div class="skill-icon"><i class="fas fa-cubes"></i><span>Open3D</span></div>
+            <div class="skill-icon"><i class="fas fa-draw-polygon"></i><span>PCL</span></div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Core Expertise</div>
+          <div class="skill-icons">
+            <div class="skill-icon"><i class="fas fa-map"></i><span>SLAM</span></div>
+            <div class="skill-icon"><i class="fas fa-route"></i><span>Motion Planning</span></div>
+            <div class="skill-icon"><i class="fas fa-satellite-dish"></i><span>Sensor Fusion</span></div>
+            <div class="skill-icon"><i class="fas fa-wave-square"></i><span>State Estimation</span></div>
+            <div class="skill-icon"><i class="fas fa-bezier-curve"></i><span>Trajectory Opt.</span></div>
+            <div class="skill-icon"><i class="fas fa-car"></i><span>Autonomy</span></div>
+            <div class="skill-icon"><i class="fas fa-crosshairs"></i><span>Localization</span></div>
+            <div class="skill-icon"><i class="fas fa-shield-alt"></i><span>Safe RL</span></div>
+            <div class="skill-icon"><i class="fas fa-expand-arrows-alt"></i><span>Sim2Real</span></div>
+            <div class="skill-icon"><i class="fas fa-compress-arrows-alt"></i><span>Kalman Filter</span></div>
+            <div class="skill-icon"><i class="fas fa-binoculars"></i><span>Object Detection</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ EDUCATION ═══════════ -->
+  <div class="section-full">
+    <div class="section" id="education">
+      <div class="section-eyebrow">Academic Background</div>
+      <div class="section-title">Education</div>
+      <div class="edu-list">
+
+        <div class="edu-card">
+          <img src="assets/TAMU_logo.png" alt="Texas A&M" class="edu-logo" />
+          <div class="edu-body">
+            <div class="edu-header">
+              <div class="edu-school">Texas A&amp;M University</div>
+              <div class="edu-date">Aug 2025 – May 2027</div>
+            </div>
+            <div class="edu-location"><i class="fas fa-map-marker-alt" style="font-size:0.7rem;margin-right:4px;"></i>College Station, Texas, USA</div>
+            <div class="edu-degree"><strong>Master of Science in Electrical Engineering</strong> &nbsp;·&nbsp; GPA: 4.0/4.0</div>
+            <div class="edu-notes">Coursework - Robotics &amp; Spatial Intelligence, Visual Navigation and Foundation Models of Autonomy, Computer Vision and Perception, Reinforcement Learning</div>
+          </div>
+        </div>
+
+        <div class="edu-card">
+          <img src="assets/NITK_Logo.png" alt="NITK" class="edu-logo" />
+          <div class="edu-body">
+            <div class="edu-header">
+              <div class="edu-school">National Institute of Technology Karnataka, Surathkal</div>
+              <div class="edu-date">Dec 2021 – May 2025</div>
+            </div>
+            <div class="edu-location"><i class="fas fa-map-marker-alt" style="font-size:0.7rem;margin-right:4px;"></i>Mangalore, Karnataka, India</div>
+            <div class="edu-degree"><strong>B.Tech in Electrical &amp; Electronics Engineering</strong> &nbsp;·&nbsp; GPA: 8.70/10 &nbsp;·&nbsp; Minor in Management</div>
+            <div class="edu-notes">Undergraduate Researcher — REHAB Group, Dept of EEE <br> Vice Captain — CSD Robocon NITK</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ COMPETITIONS ═══════════ -->
+  <div id="competitions">
+    <div class="section">
+      <div class="section-eyebrow">Achievements</div>
+      <div class="section-title">Competitions</div>
+      <div class="comp-card">
+        <img src="assets/crn.jpg" alt="CSD Robocon" class="comp-logo" />
+        <div class="comp-body">
+          <div class="comp-title">ABU Robocon</div>
+          <div class="comp-sub">CSD Robocon NITK &nbsp;·&nbsp; Mangalore, India &nbsp;·&nbsp;
+            <a href="https://robocon.nitk.ac.in/" target="_blank" style="color:var(--accent);text-decoration:none;">Visit Team Website →</a>
+          </div>
+          <div class="comp-text">Started as electronics and programming systems member, later mentored juniors and coordinated across subsystems. Stepped up as <strong>Vice Captain</strong>, guiding a <strong>40+ member team</strong> to the ABU Robocon stage.</div>
+          <button class="photo-toggle-btn" id="photoToggleBtn" onclick="togglePhotos()">Show Photos</button>
+          <div class="image-grid" id="competitionPhotos" style="display:none;">
+            <img src="assets/crn1.jpg" alt="Build Process" />
+            <img src="assets/crn2.jpg" alt="Team" />
+            <img src="assets/crn3.jpg" alt="Robot in Action" />
+            <img src="assets/crn4.jpg" alt="Competition" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════ CONTACT ═══════════ -->
+  <div class="section-full" id="contact">
+    <div class="section">
+      <div class="section-eyebrow">Get in Touch</div>
+      <div class="section-title">Contact</div>
+      <div class="section-sub">Open to research collaborations, robotics roles, and interesting problems. Feel free to reach out.</div>
+
+      <div class="contact-grid">
+        <div class="contact-links">
+          <a href="mailto:devgoti1683@gmail.com" class="contact-link">
+            <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-link-label">Email</div>
+              <div class="contact-link-value">devgoti1683@gmail.com</div>
+            </div>
+            <i class="fas fa-arrow-right contact-link-arrow"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/dev-goti/" target="_blank" class="contact-link">
+            <div class="contact-link-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div>
+              <div class="contact-link-label">LinkedIn</div>
+              <div class="contact-link-value">linkedin.com/in/dev-goti</div>
+            </div>
+            <i class="fas fa-arrow-right contact-link-arrow"></i>
+          </a>
+          <a href="https://github.com/devgoti16" target="_blank" class="contact-link">
+            <div class="contact-link-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <div class="contact-link-label">GitHub</div>
+              <div class="contact-link-value">github.com/devgoti16</div>
+            </div>
+            <i class="fas fa-arrow-right contact-link-arrow"></i>
+          </a>
+        </div>
+
+        <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+          <input type="text"  id="contactName"  class="contact-input" placeholder="Your name"    required />
+          <input type="email" id="contactEmail" class="contact-input" placeholder="Your email"   required />
+          <textarea           id="contactMsg"   class="contact-input" placeholder="Your message" rows="4" required style="resize:vertical;"></textarea>
+          <button type="submit" class="contact-submit">Send Message</button>
+          <div class="contact-status" id="formStatus"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end page-content -->
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="site-footer">
+  <canvas id="particles"></canvas>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Dev Goti</div>
+      <div class="footer-tagline">Building intelligent solutions for autonomous systems</div>
+      <div class="footer-copy">© <span id="year"></span> All rights reserved.</div>
+      <div class="footer-updated">Last updated <span id="lastUpdated"></span></div>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTopBtn" title="Back to top">↑</button>
+
+<script>
+  // ── SCROLL PROGRESS + TOP BUTTON ──
+  window.addEventListener('scroll', () => {
+    const s = document.body.scrollTop || document.documentElement.scrollTop;
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById('scrollProgress').style.width = (s / h * 100) + '%';
+    document.getElementById('scrollTopBtn').style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  document.getElementById('scrollTopBtn').addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+
+  // ── DARK MODE ──
+  const themeBtn  = document.getElementById('themeToggle');
+  const themeIcon = themeBtn.querySelector('i');
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeIcon.classList.replace('fa-moon', 'fa-sun');
+  }
+  themeBtn.addEventListener('click', () => {
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+    themeIcon.classList.replace(dark ? 'fa-sun' : 'fa-moon', dark ? 'fa-moon' : 'fa-sun');
+    localStorage.setItem('theme', dark ? 'light' : 'dark');
+  });
+
+  // ── MOBILE NAV ──
+  document.getElementById('navToggle').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+
+  // ── SMOOTH SCROLL ANCHORS ──
+  document.querySelectorAll('.nav-anchor').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const el = document.getElementById(a.getAttribute('href').replace('#',''));
+      if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+      document.getElementById('navLinks').classList.remove('open');
     });
+  });
 
-    // Stats Counter Animation
-    const statNumbers = document.querySelectorAll('.stat-number');
-    let statsAnimated = false;
+  // ── SECTION ANIMATIONS ──
+  const sectionObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(s => sectionObs.observe(s));
 
-    const animateStats = () => {
-      statNumbers.forEach(stat => {
-        const target = parseInt(stat.getAttribute('data-target'));
-        const increment = target / 100;
-        let current = 0;
+  // ── PROJECT CARD ANIMATIONS ──
+  const cardObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.project-card').forEach(c => cardObs.observe(c));
 
-        const updateCount = () => {
-          if (current < target) {
-            current += increment;
-            stat.textContent = Math.ceil(current);
-            setTimeout(updateCount, 20);
-          } else {
-            stat.textContent = target + '+';
-          }
-        };
+  // ── PROJECTS FILTER + SHOW MORE ──
+  const filterBtns  = document.querySelectorAll('.filter-btn');
+  const allCards    = [...document.querySelectorAll('.projects-grid .project-card')];
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  let showAll = false;
 
-        updateCount();
+  function updateCards() {
+    const f = document.querySelector('.filter-btn.active').dataset.filter;
+    const visible = allCards.filter(c => f === 'all' || c.dataset.category.includes(f));
+    allCards.forEach(c => c.classList.add('hidden'));
+    visible.forEach((c, i) => { if (showAll || i < 6) c.classList.remove('hidden'); });
+    showMoreBtn.style.display   = visible.length <= 6 ? 'none' : 'inline-block';
+    showMoreBtn.textContent     = showAll ? 'Show Less' : 'Show More Projects';
+  }
+
+  filterBtns.forEach(b => {
+    b.addEventListener('click', () => {
+      filterBtns.forEach(x => x.classList.remove('active'));
+      b.classList.add('active');
+      showAll = false;
+      updateCards();
+    });
+  });
+
+  showMoreBtn.addEventListener('click', () => {
+    showAll = !showAll;
+    updateCards();
+    if (!showAll) document.getElementById('projects').scrollIntoView({ behavior:'smooth' });
+  });
+
+  updateCards();
+
+  // ── COMPETITION PHOTOS TOGGLE ──
+  function togglePhotos() {
+    const p = document.getElementById('competitionPhotos');
+    const b = document.getElementById('photoToggleBtn');
+    const hidden = p.style.display === 'none';
+    p.style.display = hidden ? 'grid' : 'none';
+    b.textContent   = hidden ? 'Hide Photos' : 'Show Photos';
+  }
+
+  // ── CONTACT FORM ──
+  async function submitForm(e) {
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    const btn    = e.target.querySelector('.contact-submit');
+    btn.textContent = 'Sending...';
+    btn.style.opacity = '0.6';
+    try {
+      const res = await fetch('https://formspree.io/f/xgvnvrla', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({
+          name:    document.getElementById('contactName').value,
+          email:   document.getElementById('contactEmail').value,
+          message: document.getElementById('contactMsg').value
+        })
       });
-      statsAnimated = true;
-    };
+      if (res.ok) {
+        status.textContent   = 'Message sent. I will get back to you soon.';
+        status.style.color   = 'var(--accent)';
+        document.getElementById('contactForm').reset();
+      } else {
+        status.textContent = 'Something went wrong. Try emailing directly.';
+      }
+    } catch {
+      status.textContent = 'Something went wrong. Try emailing directly.';
+    }
+    btn.textContent   = 'Send Message';
+    btn.style.opacity = '1';
+  }
 
-    // Image Tilt Effect on Mouse Move
-    const heroImage = document.getElementById('heroImage');
-    if (heroImage) {
-      heroImage.addEventListener('mousemove', (e) => {
-        const rect = heroImage.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        heroImage.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-      });
+  // ── FOOTER PARTICLES ──
+  const canvas = document.getElementById('particles');
+  const ctx    = canvas.getContext('2d');
+  let pts = [];
 
-      heroImage.addEventListener('mouseleave', () => {
-        heroImage.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+  function resizeCanvas() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+
+  function initParticles() {
+    resizeCanvas(); pts = [];
+    for (let i = 0; i < 60; i++) {
+      pts.push({
+        x: Math.random() * canvas.width,  y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.5,
+        dx: (Math.random() - 0.5) * 0.4, dy: (Math.random() - 0.5) * 0.4,
+        o: Math.random() * 0.4 + 0.1
       });
     }
+  }
 
-    // Prevent screenshots and downloads
-    document.addEventListener('keyup', (e) => {
-      if (e.key == 'PrintScreen') {
-        navigator.clipboard.writeText('');
-        alert('Screenshots are disabled on this website');
-      }
+  function drawParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const color = document.documentElement.getAttribute('data-theme') === 'dark' ? '160,200,255' : '37,99,235';
+    pts.forEach(p => {
+      p.x += p.dx; p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width)  p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${color},${p.o})`;
+      ctx.fill();
     });
+    requestAnimationFrame(drawParticles);
+  }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || (e.ctrlKey && e.keyCode == 85)) {
-        e.preventDefault();
-        return false;
-      }
-    });
+  initParticles();
+  drawParticles();
+  window.addEventListener('resize', initParticles);
 
-    // Section scroll animations
-    const sections = document.querySelectorAll('.section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          
-          // Animate stats when about section is visible
-          if (entry.target.id === 'about' && !statsAnimated) {
-            animateStats();
-          }
-        }
-      });
-    }, { threshold: 0.1 });
-
-    sections.forEach(section => sectionObserver.observe(section));
-
-    // Project cards animation
-    const projectCards = document.querySelectorAll('.project-card');
-    const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, index * 100);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    projectCards.forEach(card => cardObserver.observe(card));
-
-    // Dark mode toggle
-    const themeToggle = document.getElementById('themeToggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-
-    if (currentTheme === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      themeIcon.classList.replace('fa-moon', 'fa-sun');
-    }
-
-    themeToggle.addEventListener('click', () => {
-      const theme = document.documentElement.getAttribute('data-theme');
-      if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        themeIcon.classList.replace('fa-sun', 'fa-moon');
-        localStorage.setItem('theme', 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        themeIcon.classList.replace('fa-moon', 'fa-sun');
-        localStorage.setItem('theme', 'dark');
-      }
-    });
-
-    // Project filters
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projects = document.querySelectorAll('.project-card');
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const filter = button.getAttribute('data-filter');
-        
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        projects.forEach(project => {
-          if (filter === 'all') {
-            project.classList.remove('hidden');
-          } else {
-            const categories = project.getAttribute('data-category');
-            if (categories && categories.includes(filter)) {
-              project.classList.remove('hidden');
-            } else {
-              project.classList.add('hidden');
-            }
-          }
-        });
-      });
-    });
-
-    // Mobile menu toggle
-    document.getElementById('navToggle').addEventListener('click', () => {
-      document.getElementById('nav').classList.toggle('active');
-    });
-
-    // Section switching
-    document.querySelectorAll('.main-tab').forEach(tab => {
-      tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        const section = tab.dataset.section;
-        document.getElementById('portfolioSection').style.display = section === 'portfolio' ? 'block' : 'none';
-        document.getElementById('exploringSection').style.display = section === 'exploring' ? 'block' : 'none';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        document.getElementById('nav').classList.remove('active');
-      });
-    });
-
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
-
-    // Scroll to top button
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 200) {
-        scrollTopBtn.style.display = 'block';
-      } else {
-        scrollTopBtn.style.display = 'none';
-      }
-    });
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Dynamic year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Disable right-click
-    document.addEventListener('contextmenu', (e) => e.preventDefault());
-  </script>
+  // ── MISC ──
+  document.addEventListener('contextmenu', e => e.preventDefault());
+  document.getElementById('year').textContent        = new Date().getFullYear();
+  document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { month:'long', year:'numeric' });
+</script>
 </body>
-</html>
+</hd
